@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'flyway'
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies{
+        classpath "com.googlecode.flyway:flyway-gradle-plugin:2.3.1"
+    }
+}
+
+dependencies{
+    compile 'mysql:mysql-connector-java:5.1.6','org.hibernate:hibernate-core:4.3.10.Final'
+    testCompile 'junit:junit:4.10'
+}
+flyway{
+    url = 'jdbc:mysql://localhost/adduser'
+    user = 'root'
+    password = 'root'
+}

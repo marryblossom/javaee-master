@@ -1,0 +1,24 @@
+
+allprojects {
+    apply plugin: 'idea'
+}
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+        maven { url "http://repo.spring.io/libs-release" }
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    }
+    jar {
+        from { configurations.runtime.collect { it.directory ? it : zipTree(it) } }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
