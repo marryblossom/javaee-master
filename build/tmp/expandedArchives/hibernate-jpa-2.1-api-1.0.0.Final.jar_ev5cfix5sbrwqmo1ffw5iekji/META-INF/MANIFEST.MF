@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Export-Package: javax.persistence;uses:="javax.persistence.metamodel,j
+ avax.persistence.criteria,javax.persistence.spi";version="2.1.0",java
+ x.persistence.criteria;uses:="javax.persistence.metamodel,javax.persi
+ stence";version="2.1.0",javax.persistence.metamodel;version="2.1.0",j
+ avax.persistence.spi;uses:="javax.persistence,javax.sql";version="2.1
+ .0"
+Implementation-Title: Java Persistence API
+Implementation-Version: 1.0.0.Final
+Built-By: Hibernate.org
+Specification-Vendor: Oracle, Inc.
+Tool: Bnd-1.50.0
+Bundle-Name: hibernate-jpa-2.1-api
+Created-By: 1.7.0_09 (Oracle Corporation)
+Bundle-Vendor: Hibernate.org
+Implementation-Vendor: hibernate.org
+Bundle-Version: 1.0.0.Final
+Bnd-LastModified: 1363124377000
+Bundle-ManifestVersion: 2
+Specification-Title: Java Persistence API, Version 2.1
+Bundle-SymbolicName: org.hibernate.javax.persistence.hibernate-jpa-2.1
+ -api
+Import-Package: javax.sql
+Specification-Version: 2.1
+

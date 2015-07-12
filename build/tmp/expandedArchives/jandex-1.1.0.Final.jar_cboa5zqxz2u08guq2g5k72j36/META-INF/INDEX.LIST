@@ -1,0 +1,11 @@
+JarIndex-Version: 1.0
+
+jandex-1.1.0.Final.jar
+META-INF
+META-INF/maven
+META-INF/maven/org.jboss
+META-INF/maven/org.jboss/jandex
+org
+org/jboss
+org/jboss/jandex
+

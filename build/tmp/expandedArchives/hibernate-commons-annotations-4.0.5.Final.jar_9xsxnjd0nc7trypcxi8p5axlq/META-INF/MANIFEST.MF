@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Export-Package: org.hibernate.annotations.common.annotationfactory;ver
+ sion="4.0.5",org.hibernate.annotations.common.util.impl;version="4.0.
+ 5";uses:="org.jboss.logging",org.hibernate.annotations.common.reflect
+ ion.java;version="4.0.5";uses:="org.hibernate.annotations.common.refl
+ ection,org.hibernate.annotations.common.reflection.java.generics",org
+ .hibernate.annotations.common.reflection;version="4.0.5",org.hibernat
+ e.annotations.common.reflection.java.generics;version="4.0.5",org.hib
+ ernate.annotations.common;version="4.0.5",org.hibernate.annotations.c
+ ommon.util;version="4.0.5";uses:="org.hibernate.annotations.common.re
+ flection"
+Implementation-Version: 4.0.5.Final
+Tool: Bnd-2.1.0.20130426-122213
+Bundle-Name: hibernate-commons-annotations
+Created-By: 1.7.0_51 (Oracle Corporation)
+Implementation-Url: http://hibernate.org
+Bundle-Vendor: Hibernate.org
+Implementation-Vendor: Hibernate.org
+Implementation-Vendor-Id: org.hibernate
+Bundle-Version: 4.0.5.Final
+Bnd-LastModified: 1405117420000
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.hibernate.common.hibernate-commons-annotation
+ s
+Import-Package: org.jboss.logging;version="[3.1,4)"
+Main-Class: org.hibernate.annotations.common.Version
+

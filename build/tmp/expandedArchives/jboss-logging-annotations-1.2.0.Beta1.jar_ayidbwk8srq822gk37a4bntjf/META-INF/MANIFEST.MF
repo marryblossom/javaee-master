@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Build-Timestamp: Tue, 18 Jun 2013 18:41:43 -0500
+Implementation-Title: JBoss Logging I18n Annotations
+Implementation-Version: 1.2.0.Beta1
+Os-Version: 3.8.7-201.fc18.x86_64
+Built-By: david
+Specification-Vendor: JBoss by Red Hat
+Created-By: Apache Maven
+Os-Name: Linux
+Implementation-URL: http://www.jboss.org/jboss-logging-tools-parent/jb
+ oss-logging-annotations
+Java-Vendor: Oracle Corporation
+Implementation-Vendor: JBoss by Red Hat
+Scm-Revision: 6161000a1713890c090c4cc26e7eb4b9f13f880e
+Implementation-Vendor-Id: org.jboss.logging
+Scm-Url: http://github.com/jboss/jboss-parent-pom/jboss-logging-tools-
+ parent/jboss-logging-annotations
+Build-Jdk: 1.7.0_05
+Java-Version: 1.7.0_05
+Scm-Connection: scm:git:git@github.com:jboss/jboss-parent-pom.git/jbos
+ s-logging-tools-parent/jboss-logging-annotations
+Os-Arch: amd64
+Specification-Title: JBoss Logging I18n Annotations
+Specification-Version: 1.2.0.Beta1
+Archiver-Version: Plexus Archiver
+

@@ -1,0 +1,12 @@
+JarIndex-Version: 1.0
+
+jboss-logging-annotations-1.2.0.Beta1.jar
+META-INF
+META-INF/maven
+META-INF/maven/org.jboss.logging
+META-INF/maven/org.jboss.logging/jboss-logging-annotations
+org
+org/jboss
+org/jboss/logging
+org/jboss/logging/annotations
+
