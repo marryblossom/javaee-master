@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.tw.core.bean.Person" table="person">
+    <class name="com.tw.core.beanNoUse.Person" table="person">
         <id name="id" type="string">
             <column name="id" not-null="true"/>
             <!--<generator class="identity" />-->

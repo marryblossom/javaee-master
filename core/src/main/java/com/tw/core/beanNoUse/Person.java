@@ -1,9 +1,4 @@
-package com.tw.core.bean;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
-import javax.annotation.Resource;
+package com.tw.core.beanNoUse;
 
 //@Entity
 //@Table(name = "user")

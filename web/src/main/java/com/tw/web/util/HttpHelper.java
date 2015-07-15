@@ -1,6 +1,6 @@
 package com.tw.web.util;
 
-import com.tw.core.bean.Person;
+import com.tw.core.beanNoUse.Person;
 import com.tw.core.service.personservice.PersonService;
 
 import javax.servlet.ServletException;

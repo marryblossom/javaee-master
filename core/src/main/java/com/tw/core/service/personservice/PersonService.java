@@ -2,7 +2,7 @@ package com.tw.core.service.personservice;
 
 import com.tw.core.DAO.PersonDao.IPersonDao;
 import com.tw.core.DAO.PersonDao.PersonDao;
-import com.tw.core.bean.Person;
+import com.tw.core.beanNoUse.Person;
 import java.util.List;
 
 /**

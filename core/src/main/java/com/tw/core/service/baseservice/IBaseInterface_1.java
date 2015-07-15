@@ -1,8 +1,5 @@
 package com.tw.core.service.baseservice;
 
-import com.tw.core.bean.Person;
-
-import java.io.File;
 import java.util.List;
 
 /**

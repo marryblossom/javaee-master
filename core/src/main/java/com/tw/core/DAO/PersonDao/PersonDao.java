@@ -1,6 +1,6 @@
 package com.tw.core.DAO.PersonDao;
 
-import com.tw.core.bean.Person;
+import com.tw.core.beanNoUse.Person;
 import com.tw.core.service.baseservice.IBaseInterface;
 import com.tw.core.service.baseservice.impl.IBaseInterfaceImplement;
 import com.tw.core.util.HibernateUtil;

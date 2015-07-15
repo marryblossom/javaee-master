@@ -1,6 +1,6 @@
 package com.tw.core.DAO.PersonDao;
 
-import com.tw.core.bean.Person;
+import com.tw.core.beanNoUse.Person;
 
 import java.util.List;
 

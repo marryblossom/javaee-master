@@ -1,6 +1,6 @@
 package com.tw.core.dboperate;
 
-import com.tw.core.bean.Person;
+import com.tw.core.beanNoUse.Person;
 import com.tw.core.util.DBConnectionHelper;
 
 import java.sql.Connection;

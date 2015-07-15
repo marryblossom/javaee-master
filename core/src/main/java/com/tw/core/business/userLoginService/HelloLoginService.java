@@ -1,6 +1,6 @@
 package com.tw.core.business.userLoginService;
 
-import com.tw.core.bean.Person;
+import com.tw.core.beanNoUse.Person;
 import com.tw.core.service.personservice.PersonService;
 import com.tw.core.util.CookiesHelper;
 import com.tw.core.util.MD5Util;

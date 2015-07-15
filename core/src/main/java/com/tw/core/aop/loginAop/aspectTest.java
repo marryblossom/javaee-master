@@ -1,9 +1,5 @@
 package com.tw.core.aop.loginAop;
 
-import com.tw.core.bean.Person;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 /**
  * Created by marry on 7/15/15.
  */

@@ -1,6 +1,6 @@
 package com.tw.core.coftest;
 
-import com.tw.core.bean.Person;
+import com.tw.core.beanNoUse.Person;
 import com.tw.core.util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -9,7 +9,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 /**

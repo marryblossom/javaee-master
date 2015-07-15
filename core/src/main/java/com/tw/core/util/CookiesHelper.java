@@ -1,6 +1,6 @@
 package com.tw.core.util;
 
-import com.tw.core.bean.Person;
+import com.tw.core.beanNoUse.Person;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

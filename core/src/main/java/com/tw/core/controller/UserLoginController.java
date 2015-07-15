@@ -1,6 +1,6 @@
 package com.tw.core.controller;
 
-import com.tw.core.bean.Person;
+import com.tw.core.beanNoUse.Person;
 import com.tw.core.business.userLoginService.HelloLoginService;
 import com.tw.core.util.CookiesHelper;
 import org.springframework.stereotype.Controller;
