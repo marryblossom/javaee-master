@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 public class CookiesHelper {
     public static HttpServletResponse setCookies(Person person,HttpServletResponse response,HttpServletRequest request){
         Cookie cookieId = new Cookie("personid",person.getId());
-        System.out.println("person========="+cookieId.getValue());
         cookieId.setMaxAge(365 * 24 * 3600);
         response.addCookie(cookieId);
         return response;

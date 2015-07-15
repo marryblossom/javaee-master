@@ -1,5 +1,3 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.tw.core.bean.Person" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%--
@@ -12,8 +10,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-
-
 <head>
 
     <title></title>
@@ -21,6 +17,8 @@
 </head>
 <body>
 <jsp:include page="/jsp/head.jsp"></jsp:include>
+
+
 <form action="update" method="post">
 <table>
     <tr>

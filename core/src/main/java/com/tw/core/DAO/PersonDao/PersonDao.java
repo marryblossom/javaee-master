@@ -12,8 +12,8 @@ import java.util.List;
  * Created by marry on 7/15/15.
  */
 public class PersonDao implements IPersonDao {
+    Session session = HibernateUtil.getSessionFactory().openSession();
     public void deleltePerson(String id){
-        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();//开启操作数据库的事务
         Person person = new Person(id);
         person.setId(id);
@@ -22,7 +22,6 @@ public class PersonDao implements IPersonDao {
         session.close();
     }
     public void insertPerson(Person person){
-        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();//开启操作数据库的事务
         session.save(person);
         session.getTransaction().commit();
@@ -35,14 +34,12 @@ public class PersonDao implements IPersonDao {
         return people;
     }
     public Person getPersonById(String id){
-        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Person person = (Person)session.get(Person.class,id);
         session.close();
         return person;
     }
     public void updatePerson(Person person){
-        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(person);
         session.getTransaction().commit();
