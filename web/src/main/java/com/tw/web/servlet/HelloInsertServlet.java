@@ -17,19 +17,19 @@ public class HelloInsertServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String gender = req.getParameter("gender");
-        String email  = req.getParameter("email");
-        String age = req.getParameter("age");
-        UUID personId = new UUID(6,6);
-        Person person = new Person(personId.randomUUID().toString());
-        person.setName(name);
-        person.setAge(new Integer(age));
-        person.setGender(gender);
-        person.setEmail(email);
-        HelloInsertService insertService  =  new HelloInsertService();
-        insertService.insertPerson(person);
-        res.sendRedirect("/web/hello");
+//        String name = req.getParameter("name");
+//        String gender = req.getParameter("gender");
+//        String email  = req.getParameter("email");
+//        String age = req.getParameter("age");
+//        UUID personId = new UUID(6,6);
+//        Person person = new Person(personId.randomUUID().toString());
+//        person.setName(name);
+//        person.setAge(new Integer(age));
+//        person.setGender(gender);
+//        person.setEmail(email);
+//        HelloInsertService insertService  =  new HelloInsertService();
+//        insertService.insertPerson(person);
+//        res.sendRedirect("/web/hello");
 
     }
 }

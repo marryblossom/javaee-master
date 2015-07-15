@@ -10,9 +10,9 @@ import java.io.IOException;
 
 public class HelloDeleteServlet extends HttpServlet {
     public void doGet (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        HelloDeleteService deleteHelper = new HelloDeleteService();
-        deleteHelper.deleltePerson(req.getParameter("id"));
-        res.sendRedirect("/web/hello");
+//        HelloDeleteService deleteHelper = new HelloDeleteService();
+//        deleteHelper.deleltePerson(req.getParameter("id"));
+//        res.sendRedirect("/web/hello");
 
     }
 
