@@ -11,6 +11,9 @@ subprojects {
     }
 
     dependencies {
+        compile 'org.springframework:spring-webmvc:4.1.7.RELEASE','javax.servlet.jsp.jstl:jstl-api:1.2-rev-1','taglibs:standard:1.1.2'
+        compile 'org.springframework.security:spring-security-core:4.0.1.RELEASE','org.springframework.security:spring-security-config:4.0.1.RELEASE','org.springframework.security:spring-security-web:4.0.1.RELEASE'
+        compile 'org.springframework:spring-aop:4.1.7.RELEASE','org.springframework:spring-aspects:4.1.7.RELEASE'
         testCompile group: 'junit', name: 'junit', version: '4.11'
 
     }
