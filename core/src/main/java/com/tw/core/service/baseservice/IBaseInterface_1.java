@@ -1,4 +1,4 @@
-package com.tw.core.baseInterface;
+package com.tw.core.service.baseservice;
 
 import com.tw.core.bean.Person;
 

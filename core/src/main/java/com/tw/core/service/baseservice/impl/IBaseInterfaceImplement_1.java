@@ -1,12 +1,10 @@
-package com.tw.core.baseInterface.baseInterfaceImplement;
+package com.tw.core.service.baseservice.impl;
 
-import com.tw.core.baseInterface.IBaseInterface_1;
-import com.tw.core.bean.Person;
+import com.tw.core.service.baseservice.IBaseInterface_1;
+import com.tw.core.service.baseservice.impl.IBaseInterfaceImplement;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -181,16 +179,7 @@ public class IBaseInterfaceImplement_1 extends IBaseInterfaceImplement implement
 //        return objectImages;
 //    }
 
-    /**
-     * @param object
-     *            –Ë“™∑µªÿIDµƒ∂‘œÛ
-     * @param flag
-     *            ∂‘œÛµƒ±Í æ
-     * @return »Ùflag=USER£¨∑µªÿ”√ªß∂‘œÛµƒID£ª »Ùflag=TEAM£¨∑µªÿ–°◊È∂‘œÛµƒID£ª
-     *         »Ùflag=USER_TEAM_TEAM£¨∑µªÿ”√ªß–°◊È∂‘œÛ÷––°◊ÈµƒID£ª
-     *         »Ùflag=USER_TEAM_USER£¨∑µªÿ”√ªß–°◊È∂‘œÛ÷–”√ªßµƒID£ª »Ùflag=DISCUSS£¨∑µªÿÃ÷¬€∂‘œÛ÷–”√ªßµƒID£ª
-     *         »Ùflag=COMMENT£¨∑µªÿ∆¿¬€∂‘œÛ÷–”√ªßµƒID£ª ∆‰À˚∑µªÿø’°£
-     */
+
 //    @Override
 //    public String getObjectId(Object object, int flag) {
 //        // TODO Auto-generated method stub

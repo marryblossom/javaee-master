@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<%--<a type="button" href="/web/goToUpdatePassword?id=<c:out value="${item.id}"/>">exchange</a>--%>
+<%--<a type="button" href="/web/goToUpdatePassword?id=<c:out valuel="${item.id}"/>">exchange</a>--%>
 
   <%Cookie[] cookies = request.getCookies();
     if (cookies.length > 1){%>

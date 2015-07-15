@@ -1,10 +1,6 @@
 package com.tw.web.servlet;
 
-import com.tw.core.bean.Person;
-import com.tw.core.service.HelloSelectService;
-import com.tw.core.service.HelloUpdateServer;
 import com.tw.web.util.HttpHelper;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

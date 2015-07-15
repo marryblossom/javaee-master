@@ -1,11 +1,7 @@
 package com.tw.core.aop.loginAop;
 
-import com.tw.core.service.AuthService;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
-
-import javax.naming.NoPermissionException;
 
 /**
  * Created by marry on 7/14/15.

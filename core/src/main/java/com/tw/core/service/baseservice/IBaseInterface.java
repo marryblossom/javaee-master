@@ -1,4 +1,4 @@
-package com.tw.core.baseInterface;
+package com.tw.core.service.baseservice;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;

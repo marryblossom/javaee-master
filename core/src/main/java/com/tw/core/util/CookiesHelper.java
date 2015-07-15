@@ -12,11 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 public class CookiesHelper {
     public static HttpServletResponse setCookies(Person person,HttpServletResponse response,HttpServletRequest request){
         Cookie cookieId = new Cookie("personid",person.getId());
+        System.out.println("person========="+cookieId.getValue());
         cookieId.setMaxAge(365 * 24 * 3600);
-      //  cookieId.setPath("/");
         response.addCookie(cookieId);
-        System.out.println("add length=======" + request.getCookies().length);
-        System.out.println("add=======" + request.getCookies()[0].getName());
         return response;
 
     }
@@ -25,19 +23,14 @@ public class CookiesHelper {
         Cookie[] cookies = request.getCookies();
         try {
             if (cookies != null) {
-                System.out.println("==================" + cookies.length);
-                System.out.println("==================" + cookies[0].getName());
                 for (int i = 0; i < cookies.length; i++) {
                     if (cookies[i].getName().equalsIgnoreCase("personid") ) {
                         cookies[i].setValue(null);
-                      //  cookies[i].setPath("/");
                         cookies[i].setMaxAge(0);
                         response.addCookie(cookies[i]);
                     }
                 }
             }
-            System.out.println("=11=================" + cookies.length);
-            System.out.println("==11================" + cookies[0].getName());
         } catch (Exception e) {
             e.printStackTrace();
         }

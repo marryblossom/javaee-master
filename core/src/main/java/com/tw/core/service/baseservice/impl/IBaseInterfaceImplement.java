@@ -1,15 +1,11 @@
-package com.tw.core.baseInterface.baseInterfaceImplement;
+package com.tw.core.service.baseservice.impl;
 
-import com.tw.core.baseInterface.IBaseInterface;
+import com.tw.core.service.baseservice.IBaseInterface;
 import com.tw.core.util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Projections;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -33,7 +29,6 @@ public class IBaseInterfaceImplement implements IBaseInterface {
     }
 
     @Override
-   // @Transactional()
     public void delete(Object object) {
         getCurrentSession().delete(object);
 

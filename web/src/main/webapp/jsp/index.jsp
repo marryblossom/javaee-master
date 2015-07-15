@@ -13,16 +13,6 @@
 
 
 <head>
-    <script type="text/javascript">
-
-        function deleteData(id) {
-            window.location.href = "/web/delete?id="+id;
-        }
-        function jumpToUpdate(id){
-            alert(id);
-            //  window.location.href = "/web/update?id="+id;
-        }
-    </script>
     <title></title>
 
 </head>
