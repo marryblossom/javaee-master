@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UserLoginController {
     Person person;
     @RequestMapping("/goToLogin")
-    public ModelAndView goToLogin() {
+    public ModelAndView goToLogin(HttpServletResponse response,HttpServletRequest request) {
         return new ModelAndView("login");
     }
     @RequestMapping("/login")
@@ -28,7 +28,6 @@ public class UserLoginController {
                               HttpServletResponse response,HttpServletRequest request) {
         person = new HelloLoginService().getLoginPerson(response,request,name,password);
         if (person != null){
-
             return new ModelAndView("redirect:/hello");
         }else {
             return new ModelAndView("login");

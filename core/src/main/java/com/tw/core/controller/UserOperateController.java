@@ -40,7 +40,8 @@ public class UserOperateController {
     }
     @RequestMapping("/delete")
     // @UserAccessAnnotation(isLogin= ISLOGIN.YES)
-    public ModelAndView helloWorld(@RequestParam("id")String id,@CookieValue(value="personid", defaultValue="") String personIdInCookie) {
+    public ModelAndView delete(@RequestParam("id")String id,
+                               @CookieValue(value="personid", defaultValue="") String personIdInCookie) {
         if (!(personIdInCookie.equals(""))){
             personService.deleltePerson(id);
             return new ModelAndView("redirect:/hello");
