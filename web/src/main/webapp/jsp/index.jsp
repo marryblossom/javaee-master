@@ -6,7 +6,7 @@
     <title></title>
 </head>
 <body>
-<jsp:include page="/jsp/head.jsp"></jsp:include>
+<jsp:include page="/jsp/head.jsp"/>
 <form action="insert" method="post">
     <table>
         <tr>

@@ -6,9 +6,8 @@
     <title></title>
 </head>
 <body>
-
   <%Cookie[] cookies = request.getCookies();
-    if (cookies.length > 1){%>
+    if (cookies!=null&&cookies.length > 1){%>
         <a type="button" href="/web/logout">logout</a>
     <%} else{%>
         <a type="button" href="/web/goToLogin">login</a>
