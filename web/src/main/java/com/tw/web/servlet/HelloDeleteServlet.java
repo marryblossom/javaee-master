@@ -1,7 +1,5 @@
 package com.tw.web.servlet;
 
-import com.tw.core.service.HelloDeleteService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

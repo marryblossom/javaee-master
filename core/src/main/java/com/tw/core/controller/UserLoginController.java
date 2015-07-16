@@ -20,12 +20,14 @@ public class UserLoginController {
     Person person;
     @RequestMapping("/goToLogin")
     public ModelAndView goToLogin(HttpServletResponse response,HttpServletRequest request) {
+
         return new ModelAndView("login");
     }
     @RequestMapping("/login")
     public ModelAndView login(@RequestParam("username")String name,
                               @RequestParam("password")String password,
                               HttpServletResponse response,HttpServletRequest request) {
+
         person = new HelloLoginService().getLoginPerson(response,request,name,password);
         if (person != null){
             return new ModelAndView("redirect:/hello");

@@ -2,6 +2,7 @@ package com.tw.core.controller;
 
 import com.tw.core.bean.Person;
 import com.tw.core.service.personservice.PersonService;
+import com.tw.core.util.CookiesHelper;
 import com.tw.core.util.MD5Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,16 +44,19 @@ public class UserOperateController {
     @RequestMapping("/delete")
     // @UserAccessAnnotation(isLogin= ISLOGIN.YES)
     public ModelAndView delete(@RequestParam("id")String id,
-                               @CookieValue(value="personid", defaultValue="") String personIdInCookie) {
+                               @CookieValue(value="personid", defaultValue="") String personIdInCookie,
+                               HttpServletResponse response,HttpServletRequest request) {
+        CookiesHelper.setUrlCookies(response, request);
+        System.out.print(CookiesHelper.getCurrentUrlCookie(request));
         if (!(personIdInCookie.equals(""))){
             personService.deleltePerson(id);
             return new ModelAndView("redirect:/hello");
         }else {
-            return new ModelAndView("login");
+            return new ModelAndView("redirect:/goToLogin");
         }
     }
     @RequestMapping("/insert")
-    public ModelAndView addTest(@RequestParam("name")String name,
+    public ModelAndView insert(@RequestParam("name")String name,
                                 @RequestParam("password")String password,
                                 @RequestParam("gender")String gender,
                                 @RequestParam("age")String age,
@@ -78,7 +84,7 @@ public class UserOperateController {
                                    @CookieValue(value="personid", defaultValue="") String personIdInCookie) {
         if (!(personIdInCookie.equals(""))){
             Person person = personService.getPersonById(id);
-            data.put("person",person);
+            data.put("person", person);
             return new ModelAndView("person", data);
         }
         else {
@@ -121,6 +127,15 @@ public class UserOperateController {
         person.setPassword(newPassword);
         personService.updatePerson(person);
         return new ModelAndView("redirect:/hello");
+    }
+
+
+    private String getPreviousPageUrl(String previousUrl){
+        String previousPageUrl = "users";
+        if(!previousUrl.equals("")){
+            previousPageUrl = previousUrl;
+        }
+        return previousPageUrl;
     }
 
 }

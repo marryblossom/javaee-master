@@ -4,9 +4,12 @@ import com.tw.core.bean.Person;
 import com.tw.core.service.baseservice.IBaseInterface;
 import com.tw.core.service.baseservice.impl.IBaseInterfaceImplement;
 import com.tw.core.util.HibernateUtil;
+import com.tw.core.util.MD5Util;
 import org.hibernate.Session;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by marry on 7/15/15.
@@ -45,4 +48,19 @@ public class PersonDao implements IPersonDao {
         session.getTransaction().commit();
         session.close();
     }
+//    public static void main(String[] args){
+//        UUID personId = new UUID(6,6);
+//        Person person = new Person(personId.randomUUID().toString());
+//        String password = MD5Util.GetMD5Code("123");
+//        person.setAge(new Integer(6));
+//        person.setName("gggg");
+//        person.setPassword(password);
+//        person.setGender("female");
+//        person.setEmail("55555");
+//        PersonDao per = new PersonDao();
+//        per.insertPerson(person);
+//
+//
+//
+//    }
 }

@@ -62,10 +62,32 @@ public class CookiesHelper {
             return "";
         }
     }
+    public static String getCurrentUrlCookie(HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (int i = 0; i <cookies.length ; i++) {
+                if (cookies[i].getName().equals("currentUrl")){
+                    return cookies[i].getValue();
+                }
+            }
+            return "";
+        } else {
+            return "";
+        }
+    }
+    public static HttpServletResponse setUrlCookies(HttpServletResponse response,HttpServletRequest request){
+        Cookie cookie = new Cookie("currentUrl",request.getRequestURL().toString());
+        cookie.setMaxAge(365 * 24 * 3600);
+        response.addCookie(cookie);
+        return response;
+
+    }
 
     public static void main(String[] args){
 //        CookiesHelper helper = new CookiesHelper();
 //        HttpServletResponse response = new HttpServletResponse();
 
     }
+
+
 }
