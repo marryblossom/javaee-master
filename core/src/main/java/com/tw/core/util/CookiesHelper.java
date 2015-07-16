@@ -1,6 +1,7 @@
 package com.tw.core.util;
 
 import com.tw.core.bean.Person;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -67,7 +68,8 @@ public class CookiesHelper {
         if (cookies != null) {
             for (int i = 0; i <cookies.length ; i++) {
                 if (cookies[i].getName().equals("currentUrl")){
-                    return cookies[i].getValue();
+                    String url = cookies[i].getValue();
+                    return manageUrl(url);
                 }
             }
             return "";
@@ -75,17 +77,31 @@ public class CookiesHelper {
             return "";
         }
     }
-    public static HttpServletResponse setUrlCookies(HttpServletResponse response,HttpServletRequest request){
-        Cookie cookie = new Cookie("currentUrl",request.getRequestURL().toString());
-        cookie.setMaxAge(365 * 24 * 3600);
-        response.addCookie(cookie);
+    public static HttpServletResponse setUrlCookies(HttpServletResponse response,HttpServletRequest request,String needStr,String id){
+        Cookie cookie = new Cookie("currentUrl",request.getRequestURL().toString()+needStr+id);
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (int i = 0; i <cookies.length ; i++) {
+                if (cookies[i].getName().equals("currentUrl")){
+                    cookies[i].setValue(request.getRequestURL().toString()+needStr+id);
+                }else {
+                    cookie.setMaxAge(365 * 24 * 3600);
+                    response.addCookie(cookie);
+                }
+            }
+
+        }
         return response;
 
     }
+    public static String manageUrl(String url){
+       return url.substring(url.lastIndexOf("/")+1);
+    }
 
     public static void main(String[] args){
-//        CookiesHelper helper = new CookiesHelper();
+       CookiesHelper helper = new CookiesHelper();
 //        HttpServletResponse response = new HttpServletResponse();
+        System.out.println(helper.manageUrl("http://localhost:8080/web/goToUpdate"));
 
     }
 

@@ -30,7 +30,8 @@ public class UserLoginController {
 
         person = new HelloLoginService().getLoginPerson(response,request,name,password);
         if (person != null){
-            return new ModelAndView("redirect:/hello");
+           // return new ModelAndView("redirect:/hello");
+            return new ModelAndView("redirect:/"+CookiesHelper.getCurrentUrlCookie(request));
         }else {
             return new ModelAndView("login");
         }

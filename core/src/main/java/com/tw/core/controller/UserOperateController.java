@@ -44,11 +44,8 @@ public class UserOperateController {
     @RequestMapping("/delete")
     // @UserAccessAnnotation(isLogin= ISLOGIN.YES)
     public ModelAndView delete(@RequestParam("id")String id,
-                               @CookieValue(value="personid", defaultValue="") String personIdInCookie,
-                               HttpServletResponse response,HttpServletRequest request) {
-        CookiesHelper.setUrlCookies(response, request);
-        System.out.print(CookiesHelper.getCurrentUrlCookie(request));
-        if (!(personIdInCookie.equals(""))){
+                               @CookieValue(value="personid", defaultValue="") String personIdInCookie) {
+            if (!(personIdInCookie.equals(""))){
             personService.deleltePerson(id);
             return new ModelAndView("redirect:/hello");
         }else {
@@ -81,7 +78,11 @@ public class UserOperateController {
     }
     @RequestMapping("/goToUpdate")
     public ModelAndView goToUpdate(@RequestParam("id")String id,
-                                   @CookieValue(value="personid", defaultValue="") String personIdInCookie) {
+                                   @CookieValue(value="personid", defaultValue="") String personIdInCookie,
+                                   HttpServletResponse response,HttpServletRequest request) {
+        String needStr = "?id=";
+        CookiesHelper.setUrlCookies(response, request,needStr,id);
+        System.out.print(CookiesHelper.getCurrentUrlCookie(request));
         if (!(personIdInCookie.equals(""))){
             Person person = personService.getPersonById(id);
             data.put("person", person);
@@ -97,7 +98,8 @@ public class UserOperateController {
                                @RequestParam("gender")String gender,
                                @RequestParam("age")String age,
                                @RequestParam("email")String email,
-                               @CookieValue(value="personid", defaultValue="") String personIdInCookie) {
+                               @CookieValue(value="personid", defaultValue="") String personIdInCookie,
+                               HttpServletResponse response,HttpServletRequest request) {
         if (!(personIdInCookie.equals(""))){
             Person person = new Person(id);
             person.setAge(new Integer(age));
