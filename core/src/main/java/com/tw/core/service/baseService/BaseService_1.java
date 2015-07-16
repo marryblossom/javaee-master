@@ -1,11 +1,11 @@
-package com.tw.core.service.baseservice;
+package com.tw.core.service.baseService;
 
 import java.util.List;
 
 /**
  * Created by marry on 7/12/15.
  */
-public interface IBaseInterface_1 {
+public interface BaseService_1 {
 //    public List<?> queryWhoseExtendClassOfPostMessageOrderByProperty(
 //            String theTypeOfPostMessage, String userIdOfThePoster,
 //            String property) throws Exception;

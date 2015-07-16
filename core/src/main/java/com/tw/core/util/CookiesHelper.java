@@ -1,7 +1,5 @@
 package com.tw.core.util;
 
-import com.tw.core.beanNoUse.Person;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,13 +8,13 @@ import javax.servlet.http.HttpServletResponse;
  * Created by marry on 7/13/15.
  */
 public class CookiesHelper {
-    public static HttpServletResponse setCookies(Person person,HttpServletResponse response,HttpServletRequest request){
-        Cookie cookieId = new Cookie("personid",person.getId());
-        cookieId.setMaxAge(365 * 24 * 3600);
-        response.addCookie(cookieId);
-        return response;
-
-    }
+//    public static HttpServletResponse setCookies(Person person,HttpServletResponse response,HttpServletRequest request){
+//        Cookie cookieId = new Cookie("personid",person.getId());
+//        cookieId.setMaxAge(365 * 24 * 3600);
+//        response.addCookie(cookieId);
+//        return response;
+//
+//    }
 
     public static void deleteCookies(HttpServletRequest request,HttpServletResponse response,String personIdInCookie){
         Cookie[] cookies = request.getCookies();

@@ -3,18 +3,18 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-7-15 23:47:28 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="demo.Schema" table="schema" catalog="adduser">
+    <class name="com.tw.core.bean.Schema" table="schema" catalog="adduser">
         <id name="schemaId" type="string">
             <column name="schemaId" length="40" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="course" class="demo.Course" fetch="select">
+        <many-to-one name="course" class="com.tw.core.bean.Course" fetch="select">
             <column name="courseId" length="40" />
         </many-to-one>
-        <many-to-one name="customer" class="demo.Customer" fetch="select">
+        <many-to-one name="customer" class="com.tw.core.bean.Customer" fetch="select">
             <column name="customerId" length="40" />
         </many-to-one>
-        <many-to-one name="employee" class="demo.Employee" fetch="select">
+        <many-to-one name="employee" class="com.tw.core.bean.Employee" fetch="select">
             <column name="emloyeeId" length="40" />
         </many-to-one>
         <property name="date" type="date">

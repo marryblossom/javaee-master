@@ -1,17 +1,28 @@
-package com.tw.core.service.baseservice.impl;
+package com.tw.core.service.baseService.impl;
 
-import com.tw.core.service.baseservice.IBaseInterface;
+import com.tw.core.service.baseService.BaseService;
 import com.tw.core.util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  * Created by marry on 7/12/15.
  */
-public class IBaseInterfaceImplement implements IBaseInterface {
+@Transactional
+@Repository
+public class BaseServiceImpl implements BaseService {
+    private static Session session;
+    static {
+        session = HibernateUtil.getSessionFactory().openSession();
+    }
   //  @Autowired
  //   private SessionFactory sessionFactory;
 
@@ -20,7 +31,7 @@ public class IBaseInterfaceImplement implements IBaseInterface {
 //    }
     @Override
     public Session getCurrentSession() {
-        return HibernateUtil.getSessionFactory().openSession();
+        return session;
     }
 
     @Override
@@ -50,18 +61,23 @@ public class IBaseInterfaceImplement implements IBaseInterface {
 
     @Override
     public void deleteById(Class<?> clazz, String id) {
-        delete(findById(clazz, id));
+        session.beginTransaction();//开启操作数据库的事务
+        session.delete(findById(clazz, id));
+        session.getTransaction().commit();
     }
 
     @Override
     public void save(Object object) {
-        getCurrentSession().save(object);
-
+        session.beginTransaction();//开启操作数据库的事务
+        session.save(object);
+        session.getTransaction().commit();
     }
 
     @Override
     public void update(Object object) {
+        session.beginTransaction();//开启操作数据库的事务
         getCurrentSession().update(object);
+        session.getTransaction().commit();
 
     }
 

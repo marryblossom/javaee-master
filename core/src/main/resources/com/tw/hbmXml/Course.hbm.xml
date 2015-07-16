@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-7-15 23:47:28 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="demo.Course" table="course" catalog="adduser">
+    <class name="com.tw.core.bean.Course" table="course" catalog="adduser">
         <id name="courseId" type="string">
             <column name="courseId" length="40" />
             <generator class="assigned" />
@@ -24,7 +24,7 @@
             <key>
                 <column name="courseId" length="40" />
             </key>
-            <one-to-many class="demo.Schema" />
+            <one-to-many class="com.tw.core.bean.Schema" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,12 +1,5 @@
 package com.tw.core.DAO.PersonDao;
 
-import com.tw.core.service.baseservice.IBaseInterface;
-import com.tw.core.service.baseservice.impl.IBaseInterfaceImplement;
-import com.tw.core.util.HibernateUtil;
-import org.hibernate.Session;
-
-import java.util.List;
-
 /**
  * Created by marry on 7/15/15.
  */

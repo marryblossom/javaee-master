@@ -1,4 +1,4 @@
-package com.tw.core.service.baseservice;
+package com.tw.core.service.baseService;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by marry on 7/12/15.
  */
-public interface IBaseInterface {
+public interface BaseService {
     Session getCurrentSession();
 
     void closeCurrentSession(Session session);

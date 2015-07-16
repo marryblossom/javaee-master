@@ -1,7 +1,6 @@
-package com.tw.core.service.baseservice.impl;
+package com.tw.core.service.baseService.impl;
 
-import com.tw.core.service.baseservice.IBaseInterface_1;
-import com.tw.core.service.baseservice.impl.IBaseInterfaceImplement;
+import com.tw.core.service.baseService.BaseService_1;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 
@@ -10,7 +9,7 @@ import java.util.List;
 /**
  * Created by marry on 7/12/15.
  */
-public class IBaseInterfaceImplement_1 extends IBaseInterfaceImplement implements IBaseInterface_1 {
+public class BaseServiceImplement_1 extends BaseServiceImpl implements BaseService_1 {
     private DetachedCriteria dCriteria;
     protected static final int USER = 0;
     protected static final int TEAM = 1;

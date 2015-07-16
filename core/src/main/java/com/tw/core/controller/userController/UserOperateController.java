@@ -1,23 +1,14 @@
-package com.tw.core.controller;
+package com.tw.core.controller.userController;
 
 
-import com.tw.core.service.personservice.PersonService;
-import com.tw.core.util.MD5Util;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 /**
  * Created by marry on 7/15/15.
  */
-//@Controller
+@Controller
 ////@RequestMapping("/userOperate")
 public class UserOperateController {
 //    PersonService personService = new PersonService();
