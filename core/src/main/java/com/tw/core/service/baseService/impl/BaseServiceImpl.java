@@ -9,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -16,8 +17,8 @@ import java.util.List;
 /**
  * Created by marry on 7/12/15.
  */
+@Service
 @Transactional
-@Repository
 public class BaseServiceImpl implements BaseService {
     private static Session session;
     static {

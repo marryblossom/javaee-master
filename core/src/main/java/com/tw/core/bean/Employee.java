@@ -2,6 +2,9 @@ package com.tw.core.bean;
 
 // Generated 2015-7-15 23:47:27 by Hibernate Tools 3.4.0.CR1
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,6 +43,7 @@ public class Employee implements java.io.Serializable {
 		this.schemas = schemas;
 		this.users = users;
 	}
+
 
 	public String getEmloyeeId() {
 		return this.emloyeeId;

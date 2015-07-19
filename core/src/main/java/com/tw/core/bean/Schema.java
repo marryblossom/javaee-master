@@ -35,7 +35,7 @@ public class Schema implements java.io.Serializable {
 		this.state = state;
 		this.type = type;
 	}
-	@Column(name = "schemaId",length = 40)
+	//@Column(name = "schemaId",length = 40)
 	public String getSchemaId() {
 		return this.schemaId;
 	}
@@ -43,7 +43,7 @@ public class Schema implements java.io.Serializable {
 	public void setSchemaId(String schemaId) {
 		this.schemaId = schemaId;
 	}
-
+	@OneToOne(fetch = FetchType.LAZY)
 	public Course getCourse() {
 		return this.course;
 	}
@@ -52,7 +52,7 @@ public class Schema implements java.io.Serializable {
 		this.course = course;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "customer")
+	@OneToOne(fetch = FetchType.LAZY)
 	public Customer getCustomer() {
 		return this.customer;
 	}
@@ -60,7 +60,7 @@ public class Schema implements java.io.Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-
+	@OneToOne(fetch = FetchType.LAZY)
 	public Employee getEmployee() {
 		return this.employee;
 	}
@@ -69,7 +69,7 @@ public class Schema implements java.io.Serializable {
 		this.employee = employee;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	//@Temporal(TemporalType.TIMESTAMP)
 	public Date getDate() {
 		return this.date;
 	}

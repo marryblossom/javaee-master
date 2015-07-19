@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <context:component-scan base-package="com.tw.core.bean"/>
+    <bean id="user" class="com.tw.core.bean.User">
+        <property name="userId" value="12344"/>
+        <property name="userName" value="tiantian"/>
+        <property name="state" value=""/>
+        <property name="password"   value="123"/>
+        <property name="type" value="active"/>
+        <property name="employee" ref="employee"/>
+    </bean>
+    <bean id="employee" class="com.tw.core.bean.Employee">
+        <property name="emloyeeId" value="12344"/>
+        <property name="gender" value="female"/>
+        <property name="state" value=""/>
+        <property name="email"   value="123"/>
+        <property name="type" value="active"/>
+        <property name="employeeName" value="tian"/>
+        <property name="introduction" value=""/>
+    </bean>
+    <!--<bean id="testIoC" class="com.tw.core.bean.testIoC">-->
+    <!--<property name="id" value="34"/>-->
+    <!--</bean>-->
+    <!--<bean id="testIoC1" class="com.tw.core.bean.testIoC">-->
+    <!--<property name="id" value="2444"/>-->
+    <!--</bean>-->
+</beans>
