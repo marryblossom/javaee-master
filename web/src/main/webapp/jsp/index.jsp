@@ -10,6 +10,5 @@
 <a href="/web/userOperate">雇员管理</a>
 <a href="/web/courseOperate">课程管理</a>
 <a href="/web/schemaOperate">课表管理</a>
-<a href="/web/calendar">calendar</a>
 </body>
 </html>

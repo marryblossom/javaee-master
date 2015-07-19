@@ -29,6 +29,6 @@ public class DefaultController {
     }
     @RequestMapping("/calendar")
     public ModelAndView calendar(){
-        return new ModelAndView("kalendal");
+        return new ModelAndView("calendarTest");
     }
 }

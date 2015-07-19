@@ -55,10 +55,9 @@ public class SchemaController {
         schema.setSchemaId(schemaId.randomUUID().toString());
         schema.setCourse(courseService.getCourseById(courseId));
         schema.setEmployee(employeeService.getEmployeeById(coachId));
-        schema.setDate(DateParseHelper.parseDate(date));
+        schema.setDate(DateParseHelper.datePasrser(date));
         schema.setState("active");
         schemaService.insertSchema(schema);
-//        schemaService.deleteAllSchema(schemasId.toString());
         return new ModelAndView("redirect:/schemaOperate/schemaShow");
 //        }else {
 //            return new ModelAndView("login");
@@ -87,11 +86,13 @@ public class SchemaController {
 //        }
     }
     @RequestMapping("/schemaUpdate")
-    public ModelAndView schemaUpdate(@RequestParam("schemasId")String schemasId,
+    public ModelAndView schemaUpdate(@RequestParam("schemaId")String schemaId,
                                          @RequestParam("date") String date,
                                          @CookieValue(value="loginId", defaultValue="") String userIdInCookie) {
 //        if (!(userIdInCookie.equals(""))){
-        schemaService.updateSchemaTablesByIds(schemasId);
+        Schema schema = schemaService.getSchemaById(schemaId);
+        schema.setDate(DateParseHelper.datePasrser(date));
+        schemaService.updateSchema(schema);
         return new ModelAndView("redirect:/schemaOperate/schemaShow");
 //        }
 //        else {

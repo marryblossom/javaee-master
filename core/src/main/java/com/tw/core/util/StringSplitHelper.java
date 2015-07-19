@@ -6,7 +6,7 @@ import java.util.logging.Logger;
  * Created by marry on 7/19/15.
  */
 public class StringSplitHelper {
-    private static Logger logger = Logger.getLogger("SchemaController");
+    private static Logger logger = Logger.getLogger("StringSplitHelper");
     public static String[] splitStringWithMark(String str, String mark){
         logger.info("this is str and mark======="+str);
         String[] strs = str.split("\\"+mark);

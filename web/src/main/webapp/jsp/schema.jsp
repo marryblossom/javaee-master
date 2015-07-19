@@ -4,6 +4,7 @@
 <html>
 <script src=".././lib/js/jquery-1.11.1.min.js"></script>
 <link href=".././lib/css/bootstrap.css" rel="stylesheet"/>
+<link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
 <script src=".././lib/js/bootstrap.min.js"></script>
 <head>
   <title></title>
@@ -35,7 +36,7 @@
           </select>
       </td>
       <td align="center">
-        <input type="text" name="date"/>
+        <input type="text" id="example" name="date"/>
       </td>
       <td align="center">
         <input type="submit" value="Submit" />
@@ -68,5 +69,12 @@
   </table>
 </div>
 
+<script src=".././calendar/glDatePicker.min.js"></script>
+<script type="text/javascript">
+  $(window).load(function()
+  {
+    $('#example').glDatePicker();
+  });
+</script>
 </body>
 </html>
