@@ -1,6 +1,7 @@
 package com.tw.core.service.schemaService;
 
 import com.tw.core.bean.Schema;
+import com.tw.core.bean.SchemaTable;
 import com.tw.core.bean.User;
 
 import java.util.List;
@@ -14,4 +15,10 @@ public interface SchemaService {
     public List<Schema> getSchemas();
     public Schema getSchemaById(String id);
     public void updateSchema(Schema schema);
+
+
+    public List<SchemaTable> getAllSchemaTables();
+    public List<Schema> getSchemaTablesByIds(String schemasId);
+    public void deleteAllSchema(String schemasId);
+    public void updateSchemaTablesByIds(String schemasId);
 }

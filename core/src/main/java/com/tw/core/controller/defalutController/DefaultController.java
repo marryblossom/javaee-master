@@ -24,7 +24,11 @@ public class DefaultController {
         return new ModelAndView("redirect:/schemaOperate/schemaShow");
     }
     @RequestMapping("/courseOperate")
-    public ModelAndView courseManagementPage(){
+     public ModelAndView courseManagementPage(){
         return new ModelAndView("redirect:/courseOperate/courseShow");
+    }
+    @RequestMapping("/calendar")
+    public ModelAndView calendar(){
+        return new ModelAndView("kalendal");
     }
 }

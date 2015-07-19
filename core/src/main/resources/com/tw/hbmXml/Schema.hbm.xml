@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-7-15 23:47:28 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.tw.core.bean.Schema" table="schema" catalog="adduser">
+    <class name="com.tw.core.bean.Schema" table="schemaTable" catalog="adduser">
         <id name="schemaId" type="string">
             <column name="schemaId" length="40" />
             <generator class="assigned" />

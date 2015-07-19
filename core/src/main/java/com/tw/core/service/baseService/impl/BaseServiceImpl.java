@@ -93,9 +93,11 @@ public class BaseServiceImpl implements BaseService {
 
     @Override
     public <T> void deleteAll(List<T> list) {
+        session.beginTransaction();//开启操作数据库的事务
         for (T object : list) {
             getCurrentSession().delete(object);
         }
+        session.getTransaction().commit();
     }
 
     @Override
