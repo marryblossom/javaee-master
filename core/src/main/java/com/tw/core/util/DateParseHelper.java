@@ -34,10 +34,7 @@ public class DateParseHelper {
     }
     public static Date datePasrser(String dateString){
         sdf.applyPattern(defaultPattern);
-        String[] dates = dateString.split("\\ ");
-        String da = getMonth(dates[0]);
-        da = dates[2]+"-"+da+"-"+dates[1].substring(0,dates[1].indexOf(","));
-        System.out.println(da);
+        String da = getDateString(dateString);
         try {
             Date date=sdf.parse(da);
             return date;
@@ -47,9 +44,21 @@ public class DateParseHelper {
         return null;
     }
     public static void main(String[] args){
-        System.out.print(datePasrser("July 1, 2015"));
+        System.out.println(datePasrser("July 1, 2015"));
+        System.out.println(datePasrser("7/1/2015"));
     }
-
+    private static String getDateString(String string){
+        String[] dates ;
+        String dateString = "";
+        if (string.contains("/")){
+            dates = string.split("\\/");
+            dateString = dates[2]+"-"+dates[0]+"-"+dates[1];
+        }else {
+            dates = string.split("\\ ");
+            dateString = dates[2]+"-"+getMonth(dates[0])+"-"+dates[1].substring(0,dates[1].indexOf(","));
+        }
+        return dateString;
+    }
     public static String getMonth(String month){
         String monthNumber = "";
         switch (month){

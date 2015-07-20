@@ -4,7 +4,9 @@
 <html>
 <script src=".././lib/js/jquery-1.11.1.min.js"></script>
 <link href=".././lib/css/bootstrap.css" rel="stylesheet"/>
+<script src=".././lib/js/bootstrap-table.js"></script>
 <link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href=".././lib/css/bootstrap-table.css">
 <script src=".././lib/js/bootstrap.min.js"></script>
 <head>
   <title></title>
@@ -47,9 +49,9 @@
 </form>
   </div>
 <div>
-  <table>
+  <table data-toggle="table" data-url="data1.json" data-striped="true">
     <tr>
-      <td align="center">课程名称：</td>
+      <td align="center" data-field="name">课程名称：</td>
       <td align="center">负责教练：</td>
       <td align="center">课程时间安排：</td>
       <td align="center">课程状态：</td>

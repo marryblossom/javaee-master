@@ -27,6 +27,10 @@ public class DefaultController {
      public ModelAndView courseManagementPage(){
         return new ModelAndView("redirect:/courseOperate/courseShow");
     }
+    @RequestMapping("/userLogin")
+    public ModelAndView userLoginManagementPage(){
+        return new ModelAndView("redirect:/userLogin/goToLogin");
+    }
     @RequestMapping("/calendar")
     public ModelAndView calendar(){
         return new ModelAndView("calendarTest");

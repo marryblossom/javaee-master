@@ -4,6 +4,10 @@
 <html>
 <script src=".././lib/js/jquery-1.11.1.min.js"></script>
 <link href=".././lib/css/bootstrap.css" rel="stylesheet"/>
+<script src=".././lib/js/bootstrap.js"></script>
+<script src=".././lib/js/bootstrap-table.js"></script>
+<link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href=".././lib/css/bootstrap-table.css">
 <script src=".././lib/js/bootstrap.min.js"></script>
 <head>
   <title></title>
@@ -33,10 +37,8 @@
       <td><input type="submit" value="Submit" /></td>
     </tr>
   </table>
-
-
 </form>
-<table>
+<table data-toggle="table" data-url="data.json" data-striped="true" data-page-size=3 data-smart-display="true "data-search="true">
   <tr>
     <td align="center">姓名：</td>
     <td align="center">用户名：</td>
@@ -49,6 +51,7 @@
   </tr>
   <c:forEach items="${users}" var="item" varStatus="status">
     <tr>
+
       <td width="50px" align="center"><c:out value="${item.userName}"/></td>
       <td width="30px" align="center"><c:out value="${item.employee.employeeName}"/></td>
       <td width="30px" align="center"><c:out value="${item.employee.gender}"/></td>

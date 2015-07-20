@@ -8,6 +8,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<script type="text/javascript">--%>
+  <%--var b = navigator.userAgent;--%>
+  <%--if(b.indexOf("Chrome") != -1){--%>
+    <%--<%request.setAttribute("browser","Chrome");%>--%>
+  <%--}else{--%>
+    <%--<%request.setAttribute("browser","Safari");%>--%>
+  <%--}--%>
+
+    <%--</script>--%>
 
 <html>
 <head>
@@ -20,34 +29,49 @@
 
 </head>
 <body>
+
 <jsp:include page="/jsp/head.jsp"/>
 
+<button onclick="browserinfo()" value="bu"></button>
 
-<form action="schemaUpdate" method="post">
-  <table>
+  <table width=435 border=1 cellspacing=3 cellpadding=0>
     <tr>
+
       <td width="50px" align="center">课程</td>
       <td width="90px" align="center">教练</td>
       <td width="50px" align="center">时间</td>
       <td width="50px" align="center"></td>
     </tr>
+    </table>
 <c:forEach items="${schemas}" var="item" varStatus="status">
+<form action="schemaUpdate" method="post">
+  <table width=435 border=1 cellspacing=3 cellpadding=0>
     <tr>
+      <td width="50px" align="center"><input class="browser" type="text" name="browser"/></td>
       <td width="50px" align="center" hidden><input name="schemaId" type="text" value="<c:out value="${item.schemaId}"/>"/></td>
       <td width="50px" align="center" ><c:out value="${item.course.name}"/></td>
       <td width="50px" align="center"><c:out value="${item.employee.employeeName}"/></td>
-      <td width="50px" align="center"><input type="text" id="example" name="date" value="<c:out value="${item.date}"/>"/></td>
+      <td width="50px" align="center"><input type="text" id="<c:out value="${item.schemaId}"/>" name="date" value="<c:out value="${item.date}"/>"/></td>
       <td width="50px" align="center"><input type="submit" value="update" /></td>
     </tr>
-  </c:forEach>
-  </table>
+    <script type="text/javascript">
+      $(window).load(function()
+      {
+        var e = '#<c:out value="${item.schemaId}"/>';
+       $(e).glDatePicker();
+      });
+    </script>
+    </table>
 </form>
+  </c:forEach>
 <script src=".././calendar/glDatePicker.min.js"></script>
-<script type="text/javascript">
-  $(window).load(function()
-  {
-    $('#example').glDatePicker();
-  });
-</script>
+<%--<script type="text/javascript">--%>
+  <%--$(window).load(function()--%>
+  <%--{--%>
+
+    <%--$('#example'<c:out value="${item.schemaId}"/>).glDatePicker();--%>
+  <%--});--%>
+<%--</script>--%>
+
 </body>
 </html>

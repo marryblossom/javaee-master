@@ -116,8 +116,8 @@ public class BaseServiceImpl implements BaseService {
 
     @Override
     public <T> T findById(Class<T> clazz, String id) {
-
-        return (T) getCurrentSession().get(clazz, id);
+        return (T) getCurrentSession().load(clazz, id);
+//        return (T) getCurrentSession().get(clazz, id);
     }
 
 

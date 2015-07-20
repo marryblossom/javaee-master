@@ -5,6 +5,7 @@ import com.tw.core.bean.Employee;
 import com.tw.core.bean.User;
 import com.tw.core.service.employeeService.EmployeeService;
 import com.tw.core.service.userService.UserService;
+import com.tw.core.util.CookiesHelper;
 import com.tw.core.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +56,7 @@ public class UserOperateController {
     }
     @RequestMapping("/delete")
     // @UserAccessAnnotation(isLogin= ISLOGIN.YES)
-    public ModelAndView delete(@RequestParam("userId")String userId,@CookieValue(value="loginId", defaultValue="") String userIdInCookie) {
+    public ModelAndView delete(@RequestParam("userId")String userId) {
 //        if (!(userIdInCookie.equals(""))){
         Employee employee = userService.getUserById(userId).getEmployee();
         userService.changeUserState(userId);
@@ -72,7 +74,7 @@ public class UserOperateController {
                                 @RequestParam("gender")String gender,
                                 @RequestParam("introduction")String introduction,
                                 @RequestParam("email")String email,
-                                @CookieValue(value="loginId", defaultValue="") String userIdInCookie) {
+                                @CookieValue(value="loginUserId", defaultValue="") String userIdInCookie) {
         UUID employeeId = new UUID(6, 6);
         Employee employee = new Employee();
         employee.setEmloyeeId(employeeId.randomUUID().toString());
@@ -103,7 +105,7 @@ public class UserOperateController {
 //    }
     @RequestMapping("/goToUpdate")
     public ModelAndView goToUpdate(@RequestParam("userId")String userId,
-                                   @CookieValue(value="loginId", defaultValue="") String userIdInCookie) {
+                                   @CookieValue(value="loginUserId", defaultValue="") String userIdInCookie) {
 //        if (!(userIdInCookie.equals(""))){
             User user = userService.getUserById(userId);
             data.put("user",user);
@@ -119,7 +121,7 @@ public class UserOperateController {
                                @RequestParam("gender")String gender,
                                @RequestParam("introduction")String introduction,
                                @RequestParam("email")String email,
-                               @CookieValue(value="loginId", defaultValue="") String userIdInCookie) {
+                               @CookieValue(value="loginUserId", defaultValue="") String userIdInCookie) {
 //        if (!(userIdInCookie.equals(""))){
         Employee employee = userService.getUserById(userId).getEmployee();
         employee.setEmployeeName(employeeName);

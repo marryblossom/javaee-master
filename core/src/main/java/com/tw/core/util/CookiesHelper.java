@@ -8,22 +8,23 @@ import javax.servlet.http.HttpServletResponse;
  * Created by marry on 7/13/15.
  */
 public class CookiesHelper {
-//    public static HttpServletResponse setCookies(Person person,HttpServletResponse response,HttpServletRequest request){
-//        Cookie cookieId = new Cookie("personid",person.getId());
-//        cookieId.setMaxAge(365 * 24 * 3600);
-//        response.addCookie(cookieId);
-//        return response;
-//
-//    }
+    public static HttpServletResponse setCookies(String value,HttpServletResponse response,String cookieId){
+        Cookie cookie = new Cookie(cookieId,value);
+        cookie.setMaxAge(365 * 24 * 3600);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        return response;
+    }
 
-    public static void deleteCookies(HttpServletRequest request,HttpServletResponse response,String personIdInCookie){
+    public static void deleteCookies(HttpServletRequest request,HttpServletResponse response,String cookieId){
         Cookie[] cookies = request.getCookies();
         try {
             if (cookies != null) {
                 for (int i = 0; i < cookies.length; i++) {
-                    if (cookies[i].getName().equalsIgnoreCase("personid") ) {
+                    if (cookies[i].getName().equalsIgnoreCase(cookieId) ) {
                         cookies[i].setValue(null);
                         cookies[i].setMaxAge(0);
+                        cookies[i].setPath("/");
                         response.addCookie(cookies[i]);
                     }
                 }
@@ -33,11 +34,11 @@ public class CookiesHelper {
         }
     }
 
-    public static boolean hasCookies(HttpServletRequest request) {
+    public static boolean hasCookies(HttpServletRequest request,String cookieId) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (int i = 0; i <cookies.length ; i++) {
-                if (cookies[i].getName().equals("personid")){
+                if (cookies[i].getName().equals(cookieId)){
                     return true;
                 }
             }
@@ -47,11 +48,11 @@ public class CookiesHelper {
         }
     }
 
-    public static String getCookie(HttpServletRequest request){
+    public static String getCookie(HttpServletRequest request,String cookieId){
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (int i = 0; i <cookies.length ; i++) {
-                if (cookies[i].getName().equals("persnid")){
+                if (cookies[i].getName().equals(cookieId)){
                     return cookies[i].getValue();
                 }
             }

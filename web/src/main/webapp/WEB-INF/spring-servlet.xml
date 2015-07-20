@@ -9,11 +9,18 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-<context:annotation-config/>
+    <context:annotation-config/>
     <mvc:annotation-driven/>
     <mvc:resources mapping="/**" location="/"/>
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
     <context:component-scan base-package="com.tw.core"/>
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/**" />-->
+            <!--<bean class="com.tw.core.interceptor.LoginInterceptor">-->
+            <!--</bean>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
     <!--<bean id="openSessionInViewInterceptor" class="org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor">-->
         <!--<property name="sessionFactory">-->
@@ -54,6 +61,6 @@
         <property name="prefix" value="/jsp/" />
         <!--<property name="prefix" value="/" />-->
         <property name="suffix" value=".jsp" />
-
     </bean>
+
 </beans>

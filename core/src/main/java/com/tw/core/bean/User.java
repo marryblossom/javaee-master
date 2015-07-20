@@ -50,7 +50,6 @@ public class User implements java.io.Serializable {
 	}
 
 	@Autowired
-
 	public Employee getEmployee() {
 		return this.employee;
 	}

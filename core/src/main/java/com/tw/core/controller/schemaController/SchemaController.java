@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,9 +89,10 @@ public class SchemaController {
     @RequestMapping("/schemaUpdate")
     public ModelAndView schemaUpdate(@RequestParam("schemaId")String schemaId,
                                          @RequestParam("date") String date,
-                                         @CookieValue(value="loginId", defaultValue="") String userIdInCookie) {
+                                     HttpServletRequest request) {
 //        if (!(userIdInCookie.equals(""))){
         Schema schema = schemaService.getSchemaById(schemaId);
+        logger.info(date);
         schema.setDate(DateParseHelper.datePasrser(date));
         schemaService.updateSchema(schema);
         return new ModelAndView("redirect:/schemaOperate/schemaShow");
