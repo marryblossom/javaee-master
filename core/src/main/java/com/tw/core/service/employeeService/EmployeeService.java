@@ -1,9 +1,6 @@
 package com.tw.core.service.employeeService;
 
 import com.tw.core.bean.Employee;
-import com.tw.core.bean.User;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
@@ -16,4 +13,6 @@ public interface EmployeeService {
     public Employee getEmployeeById(String id);
     public void updateEmployee(Employee employee);
     public void changeEmployeeState(Employee employee);
+
+    public List<Employee> getEmployeesOnlyActive();
 }

@@ -17,8 +17,8 @@
 <form action="addCourse" method="post">
   <table>
     <tr>
-      <td align="center">课程名称：</td>
-      <td align="center">课程简介：</td>
+      <td align="center">课程名称</td>
+      <td align="center">课程简介</td>
       <td></td>
     </tr>
     <tr>
@@ -32,9 +32,9 @@
 </form>
 <table data-toggle="table" data-url="data.json" data-striped="true">
   <tr>
-    <td align="center">课程名称：</td>
-    <td align="center">课程简介：</td>
-    <td align="center">课程状态：</td>
+    <td align="center">课程名称</td>
+    <td align="center">课程简介</td>
+    <td align="center">课程状态</td>
     <td align="center"></td>
     <td align="center"></td>
     <td></td>

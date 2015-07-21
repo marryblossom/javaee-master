@@ -14,5 +14,5 @@ public interface CourseService {
     public List<Course> getCourses();
     public Course getCourseById(String id);
     public void updateCourse(Course course);
-    public void changeCourseState(String courseId);
+    public List<Course> getCoursesOnlyActive();
 }

@@ -1,13 +1,20 @@
 package com.tw.core.service.customerService.customerServiceImpl;
 
+import com.tw.core.bean.Course;
 import com.tw.core.bean.Customer;
+import com.tw.core.bean.Employee;
 import com.tw.core.service.baseService.impl.BaseServiceImpl;
 import com.tw.core.service.customerService.CustomerService;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 /**
  * Created by marry on 7/16/15.
  */
+@Service
 public class CustomerServiceImpl extends BaseServiceImpl implements CustomerService {
     @Override
     public void insertCustomer(Customer customer) {
@@ -27,7 +34,7 @@ public class CustomerServiceImpl extends BaseServiceImpl implements CustomerServ
 
     @Override
     public Customer getCustomerById(String id) {
-        Customer customer = findById(Customer.class,id);
+        Customer customer = findById(Customer.class, id);
         return customer;
     }
 
@@ -35,4 +42,14 @@ public class CustomerServiceImpl extends BaseServiceImpl implements CustomerServ
     public void updateCustomer(Customer customer) {
         update(customer);
     }
+
+    @Override
+    public List<Customer> getCustomerOnlyActive() {
+        DetachedCriteria dCriteria = DetachedCriteria.forClass(Customer.class);
+        dCriteria.add(Restrictions.eq("state", "active"));
+        List<Customer> customers =  queryAllOfCondition(Customer.class, dCriteria);
+        return customers;
+    }
+
+
 }

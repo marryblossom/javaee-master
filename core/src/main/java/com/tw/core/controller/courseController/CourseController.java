@@ -2,8 +2,10 @@ package com.tw.core.controller.courseController;
 
 import com.tw.core.bean.Course;
 import com.tw.core.bean.Employee;
+import com.tw.core.bean.Schema;
 import com.tw.core.bean.User;
 import com.tw.core.service.courseService.CourseService;
+import com.tw.core.service.schemaService.SchemaService;
 import com.tw.core.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,8 @@ import java.util.UUID;
 public class CourseController {
     @Autowired
     private CourseService courseService;
+    @Autowired
+    private SchemaService schemaService;
     Map<String,Object> data = new HashMap<String,Object>();
     @RequestMapping("/courseShow")
     public ModelAndView courseShow() {
@@ -42,13 +46,18 @@ public class CourseController {
         course.setName(courseName);
         course.setIntroduction(introduction);
         course.setState("active");
+        course.setType("public");
         courseService.insertCourse(course);
         return new ModelAndView("redirect:/courseOperate/courseShow");
     }
 
     @RequestMapping("/deleteCourse")
     public ModelAndView deleteCourse(@RequestParam("courseId")String courseId) {
-        courseService.changeCourseState(courseId);
+        Course course = courseService.getCourseById(courseId);
+        course.setState("block");
+        courseService.updateCourse(course);
+        List<Schema> schemas = schemaService.getSchemasByCourse(course);
+        schemaService.deleteAllSchemas(schemas);
         return new ModelAndView("redirect:/courseOperate/courseShow");
     }
     @RequestMapping("/updateCourse")

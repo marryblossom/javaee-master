@@ -40,12 +40,13 @@
 </form>
 <table data-toggle="table" data-url="data.json" data-striped="true" data-page-size=3 data-smart-display="true "data-search="true">
   <tr>
-    <td align="center">姓名：</td>
-    <td align="center">用户名：</td>
-    <td align="center">性别：</td>
-    <td align="center">邮箱：</td>
-    <td align="center">简介：</td>
-    <td align="center">用户状态：</td>
+    <td align="center">姓名</td>
+    <td align="center">用户名</td>
+    <td align="center">性别</td>
+    <td align="center">邮箱</td>
+    <td align="center">简介</td>
+    <td align="center">状态</td>
+    <td align="center">职位</td>
     <td></td>
     <td></td>
   </tr>
@@ -57,7 +58,8 @@
       <td width="30px" align="center"><c:out value="${item.employee.gender}"/></td>
       <td width="30px" align="center"><c:out value="${item.employee.email}"/></td>
       <td width="30px" align="center"><c:out value="${item.employee.introduction}"/></td>
-      <td width="30px" align="center"><c:out value="${item.state}"/></td>
+      <td width="30px" align="center"><c:out value="${item.employee.state}"/></td>
+      <td width="30px" align="center"><c:out value="${item.employee.type}"/></td>
       <td width="30px" align="center"><a type="button" href="/web/userOperate/delete?userId=<c:out value="${item.userId}"/>">delete</a></td>
       <td width="30px" align="center"><a type="button" href="/web/userOperate/goToUpdate?userId=<c:out value="${item.userId}"/>">update</a></td>
     </tr>

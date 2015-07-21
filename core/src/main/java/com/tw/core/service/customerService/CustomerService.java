@@ -2,8 +2,6 @@ package com.tw.core.service.customerService;
 
 import com.tw.core.bean.Customer;
 import org.springframework.stereotype.Service;
-
-import javax.xml.ws.ServiceMode;
 import java.util.List;
 
 /**
@@ -16,4 +14,7 @@ public interface CustomerService {
     public List<Customer> getCustomers();
     public Customer getCustomerById(String id);
     public void updateCustomer(Customer customer);
+
+    public List<Customer> getCustomerOnlyActive();
+
 }

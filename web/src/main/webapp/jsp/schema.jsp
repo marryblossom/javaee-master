@@ -21,6 +21,7 @@
       <td width="50px" align="center">教练</td>
       <td width="90px" align="center">时间</td>
       <td width="50px" align="center"></td>
+      <td width="50px" align="center"></td>
     </tr>
     <tr>
       <td align="center">
@@ -43,29 +44,32 @@
       <td align="center">
         <input type="submit" value="Submit" />
       </td>
+      <td width="50px" align="center"></td>
     </tr>
-
   </table>
 </form>
+  <a type="button" href="/web/schemaOperate/schemaPrivateShow">private</a>
   </div>
 <div>
-  <table data-toggle="table" data-url="data1.json" data-striped="true">
+  <table data-toggle="table"  data-striped="true">
     <tr>
-      <td align="center" data-field="name">课程名称：</td>
-      <td align="center">负责教练：</td>
-      <td align="center">课程时间安排：</td>
-      <td align="center">课程状态：</td>
+      <td align="center" data-field="name">课程名称</td>
+      <td align="center">负责教练</td>
+      <td align="center">课程时间安排</td>
+      <td align="center">课程状态</td>
+      <td align="center">课程类型</td>
       <td></td>
       <td></td>
     </tr>
-    <c:forEach items="${schemaTables}" var="item" varStatus="status">
+    <c:forEach items="${schemas}" var="item" varStatus="status">
       <tr>
         <td width="50px" align="center"><c:out value="${item.course.name}"/></td>
         <td width="30px" align="center"><c:out value="${item.employee.employeeName}"/></td>
         <td width="30px" align="center"><c:out value="${item.date}"/></td>
         <td width="30px" align="center"><c:out value="${item.state}"/></td>
-        <td width="50px" align="center"><a type="button" href="/web/schemaOperate/deleteSchema?schemasId=<c:out value="${item.schemasId}"/>">delete</a></td>
-          <td width="50px" align="center"><a type="button" href="/web/schemaOperate/goToSchemaUpdate?schemasId=<c:out value="${item.schemasId}"/>">update</a></td>
+        <td width="30px" align="center"><c:out value="${item.type}"/></td>
+        <td width="50px" align="center"><a type="button" href="/web/schemaOperate/deleteSchema?schemasId=<c:out value="${item.schemaId}"/>">delete</a></td>
+          <td width="50px" align="center"><a type="button" href="/web/schemaOperate/goToSchemaUpdate?schemasId=<c:out value="${item.schemaId}"/>">update</a></td>
       </tr>
     </c:forEach>
   </table>

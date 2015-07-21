@@ -2,8 +2,10 @@ package com.tw.core.controller.userController;
 
 
 import com.tw.core.bean.Employee;
+import com.tw.core.bean.Schema;
 import com.tw.core.bean.User;
 import com.tw.core.service.employeeService.EmployeeService;
+import com.tw.core.service.schemaService.SchemaService;
 import com.tw.core.service.userService.UserService;
 import com.tw.core.util.CookiesHelper;
 import com.tw.core.util.MD5Util;
@@ -34,6 +36,8 @@ public class UserOperateController {
     private UserService userService;
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+    private SchemaService schemaService;
     Map<String,Object> data = new HashMap<String,Object>();
 
 //    @RequestMapping("/hello")
@@ -57,14 +61,17 @@ public class UserOperateController {
     @RequestMapping("/delete")
     // @UserAccessAnnotation(isLogin= ISLOGIN.YES)
     public ModelAndView delete(@RequestParam("userId")String userId) {
-//        if (!(userIdInCookie.equals(""))){
-        Employee employee = userService.getUserById(userId).getEmployee();
-        userService.changeUserState(userId);
-        employeeService.changeEmployeeState(employee);
+        User user = userService.getUserById(userId);
+        Employee employee = user.getEmployee();
+
+        user.setState("locked");
+        employee.setState("locked");
+
+        userService.updateUser(user);
+        employeeService.updateEmployee(employee);
+        List<Schema> schemas = schemaService.getSchemasByEmployee(employee);
+        schemaService.deleteAllSchemas(schemas);
         return new ModelAndView("redirect:/userOperate/hello");
-//        }else {
-//            return new ModelAndView("login");
-//        }
     }
 //    @RequestMapping(params = "method=addUserAndEmployee",method = RequestMethod.POST)
     @RequestMapping("/addUserAndEmployee")

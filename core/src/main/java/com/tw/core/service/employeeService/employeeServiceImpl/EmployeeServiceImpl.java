@@ -1,9 +1,13 @@
 package com.tw.core.service.employeeService.employeeServiceImpl;
 
+import com.tw.core.bean.Course;
 import com.tw.core.bean.Employee;
+import com.tw.core.bean.Schema;
 import com.tw.core.bean.User;
 import com.tw.core.service.baseService.impl.BaseServiceImpl;
 import com.tw.core.service.employeeService.EmployeeService;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -45,5 +49,19 @@ public class EmployeeServiceImpl extends BaseServiceImpl implements EmployeeServ
     public void changeEmployeeState(Employee employee){
         employee.setState("locked");
         updateEmployee(employee);
+    }
+
+    @Override
+    public List<Employee> getEmployeesOnlyActive() {
+        DetachedCriteria dCriteria = DetachedCriteria.forClass(Employee.class);
+        dCriteria.add(Restrictions.eq("state", "active"));
+        dCriteria.add(Restrictions.eq("type", "coach"));
+        List<Employee> employees =  queryAllOfCondition(Employee.class, dCriteria);
+        return employees;
+    }
+
+    public static void main(String[] args){
+        EmployeeServiceImpl service = new EmployeeServiceImpl();
+        service.getEmployeesOnlyActive();
     }
 }

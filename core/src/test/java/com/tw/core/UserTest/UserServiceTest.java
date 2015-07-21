@@ -9,11 +9,16 @@ import com.tw.core.service.userService.userServiceImpl.UserServiceImpl;
 import com.tw.core.util.MD5Util;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -21,13 +26,15 @@ import java.util.logging.Logger;
 /**
  * Created by marry on 7/16/15.
  */
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = {"classpath:User.bean.xml"})
-@Controller
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:hibernate.cfg.xml"})
+//@TransactionConfiguration(defaultRollback = false, transactionManager = "transactionManager")
 public class UserServiceTest {
     private static Logger logger = Logger.getLogger("userServiceTest");
+//    @Autowired
     private UserService userService = new UserServiceImpl();
-    private EmployeeService employeeService = new EmployeeServiceImpl();
+//    @Autowired
+    private EmployeeService employeeService  = new EmployeeServiceImpl();
 
     @Before
     public void setUp() throws Exception {
@@ -64,11 +71,13 @@ public class UserServiceTest {
 
     }
 
+    @Rollback
     @Test
     public void testGetUserById() throws Exception {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/tw/beanXml/User.bean.xml");
+        //ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/tw/beanXml/User.bean.xml");
         User user = userService.getUserById("7da60f98-1c8c-4a65-8f98-31b07ee1791e");
-        logger.info(user.getEmployee().getEmloyeeId());
+//        assertEquals("小明",user.getUserName());
+//        logger.info(user.getEmployee().getEmloyeeId());
     }
 
     @Test

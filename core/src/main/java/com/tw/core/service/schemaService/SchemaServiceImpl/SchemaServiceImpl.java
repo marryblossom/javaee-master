@@ -1,9 +1,6 @@
 package com.tw.core.service.schemaService.schemaServiceImpl;
 
-import com.tw.core.bean.Course;
-import com.tw.core.bean.Employee;
-import com.tw.core.bean.Schema;
-import com.tw.core.bean.SchemaTable;
+import com.tw.core.bean.*;
 import com.tw.core.service.baseService.impl.BaseServiceImpl;
 import com.tw.core.service.schemaService.SchemaService;
 import com.tw.core.util.StringSplitHelper;
@@ -63,6 +60,7 @@ public class SchemaServiceImpl extends BaseServiceImpl implements SchemaService{
                 String arrangeTime = getCourseArrangementTime(schemas, course, employee);
                 String schemasId = getSchemasId(course,employee);
                 SchemaTable schemaTable = new SchemaTable(schemasId,course, employee, arrangeTime, schemas.get(i).getState());
+                schemaTable.setType(schemas.get(i).getType());
                 schemaTables.add(schemaTable);
             }
         }
@@ -70,7 +68,7 @@ public class SchemaServiceImpl extends BaseServiceImpl implements SchemaService{
     }
 
     @Override
-    public void deleteAllSchema(String schemasId){
+    public void deleteAllSchemaByIds(String schemasId){
         String[] schemasIds = schemasId.split("\\,");
         logger.info("this is schemasIds" + schemasIds[0]);
         for (int i=0;i<schemasIds.length;i++){
@@ -108,6 +106,43 @@ public class SchemaServiceImpl extends BaseServiceImpl implements SchemaService{
         }
 
     }
+    @Override
+    public List<Schema> getPrivateSchemas(){
+        DetachedCriteria dCriteria = DetachedCriteria.forClass(Schema.class);
+        dCriteria.add(Restrictions.eq("type", "private"));
+        List<Schema> privateSchemas =  queryAllOfCondition(Schema.class, dCriteria);
+        return privateSchemas;
+
+    }
+
+    @Override
+    public List<Schema> getSchemasByEmployee(Employee employee) {
+        DetachedCriteria dCriteria = DetachedCriteria.forClass(Schema.class);
+        dCriteria.add(Restrictions.eq("employee", employee));
+        List<Schema> schemas = queryAllOfCondition(Schema.class, dCriteria);
+        return  schemas;
+    }
+
+    @Override
+    public List<Schema> getSchemasByCustomer(Customer customer) {
+        DetachedCriteria dCriteria = DetachedCriteria.forClass(Schema.class);
+        dCriteria.add(Restrictions.eq("customer", customer));
+        List<Schema> schemas = queryAllOfCondition(Schema.class, dCriteria);
+        return  schemas;
+    }
+
+    @Override
+    public List<Schema> getSchemasByCourse(Course course) {
+        DetachedCriteria dCriteria = DetachedCriteria.forClass(Schema.class);
+        dCriteria.add(Restrictions.eq("course", course));
+        List<Schema> schemas = queryAllOfCondition(Schema.class, dCriteria);
+        return  schemas;
+    }
+    @Override
+    public void deleteAllSchemas(List<Schema> schemas){
+        deleteAll(schemas);
+    }
+
     private String getCourseArrangementTime(List<Schema> schemas,Course course, Employee employee){
         String arrangementTime = "";
         DetachedCriteria dCriteria = DetachedCriteria.forClass(Schema.class);
@@ -126,6 +161,17 @@ public class SchemaServiceImpl extends BaseServiceImpl implements SchemaService{
             arrangementTime +=  dateLast.toString();
         }
         return arrangementTime;
+    }
+    @Override
+    public boolean schemaAtThisTimeExist(Employee employee,Date date){
+        DetachedCriteria dCriteria = DetachedCriteria.forClass(Schema.class);
+        dCriteria.add(Restrictions.eq("employee", employee));
+        dCriteria.add(Restrictions.eq("date",date));
+        List<Schema> schemas = queryAllOfCondition(Schema.class, dCriteria);
+        if (schemas.size()>0){
+            return true;
+        }
+        return false;
     }
     private String getSchemasId(Course course, Employee employee){
         String schemasId = "";

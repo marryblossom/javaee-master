@@ -1,9 +1,9 @@
 package com.tw.core.service.schemaService;
 
-import com.tw.core.bean.Schema;
-import com.tw.core.bean.SchemaTable;
-import com.tw.core.bean.User;
+import com.tw.core.bean.*;
+import com.tw.core.util.DateParseHelper;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,6 +19,15 @@ public interface SchemaService {
 
     public List<SchemaTable> getAllSchemaTables();
     public List<Schema> getSchemaTablesByIds(String schemasId);
-    public void deleteAllSchema(String schemasId);
+    public void deleteAllSchemaByIds(String schemasId);
     public void updateSchemaTablesByIds(String schemasId);
+
+    public List<Schema> getPrivateSchemas();
+
+    public List<Schema> getSchemasByEmployee(Employee employee);
+    public List<Schema> getSchemasByCustomer(Customer customer);
+    public List<Schema> getSchemasByCourse(Course course);
+
+    public void deleteAllSchemas(List<Schema> schemas);
+    public boolean schemaAtThisTimeExist(Employee employee, Date date);
 }

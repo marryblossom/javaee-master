@@ -31,8 +31,9 @@ public class DefaultController {
     public ModelAndView userLoginManagementPage(){
         return new ModelAndView("redirect:/userLogin/goToLogin");
     }
-    @RequestMapping("/calendar")
-    public ModelAndView calendar(){
-        return new ModelAndView("calendarTest");
+    @RequestMapping("/customerOperate")
+    public ModelAndView customerManagementPage(){
+        return new ModelAndView("redirect:/customerOperate/customerShow");
     }
+
 }
