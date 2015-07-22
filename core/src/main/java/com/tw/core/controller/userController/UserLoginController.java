@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
@@ -34,14 +35,13 @@ public class UserLoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam("username")String name,
                               @RequestParam("password")String password,
-                              HttpServletResponse response,@CookieValue(value="prevPage", defaultValue="") String preUrl)
+                              HttpServletRequest request)
             throws NoSuchAlgorithmException {
         user = userLoginService.getUserByNameAndPassword(name, MD5Util.GetMD5Code(password));
+        HttpSession session = request.getSession();
         if (user != null){
-                CookiesHelper.setCookies("true",response,"loginUserId");
-                logger.info("url====="+getPreUrl(preUrl));
-//                return new ModelAndView("redirect:/" + getPreUrl(preUrl));
-            return new ModelAndView("redirect:/userOperate/hello");
+            session.setAttribute("userLogin", "true");
+            return new ModelAndView("redirect:/" + getPreUrl(session.getAttribute("prePage").toString()));
         }else {
             return new ModelAndView("redirect:/userLogin/goToLogin");
         }
@@ -55,7 +55,7 @@ public class UserLoginController {
 
     private String getPreUrl(String preUrl){
         String defaultUrl = "userOperate/";
-        if(!preUrl.equals("")){
+        if(preUrl.equals("")){
             preUrl = defaultUrl;
         }
         return preUrl;

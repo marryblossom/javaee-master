@@ -7,9 +7,9 @@
 </head>
 <body>
 <jsp:include page="/jsp/head.jsp"/>
-<a href="/web/userOperate">雇员管理</a>
-<a href="/web/courseOperate">课程管理</a>
-<a href="/web/schemaOperate">课表管理</a>
-<a href="/web/customerOperate">客户管理</a>
+<%--<a href="/web/userOperate">雇员管理</a>--%>
+<%--<a href="/web/courseOperate">课程管理</a>--%>
+<%--<a href="/web/schemaOperate">课表管理</a>--%>
+<%--<a href="/web/customerOperate">客户管理</a>--%>
 </body>
 </html>

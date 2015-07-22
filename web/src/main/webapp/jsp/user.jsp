@@ -15,6 +15,9 @@
 </head>
 <body>
 <jsp:include page="/jsp/head.jsp"/>
+<div class="container projects">
+
+
 <form action="addUserAndEmployee" method="post">
   <table>
     <tr>
@@ -38,7 +41,7 @@
     </tr>
   </table>
 </form>
-<table data-toggle="table" data-url="data.json" data-striped="true" data-page-size=3 data-smart-display="true "data-search="true">
+<table data-toggle="table" data-striped="true" data-page-size=3 data-smart-display="true "data-search="true">
   <tr>
     <td align="center">姓名</td>
     <td align="center">用户名</td>
@@ -65,6 +68,6 @@
     </tr>
   </c:forEach>
 </table>
-
+</div>
 </body>
 </html>

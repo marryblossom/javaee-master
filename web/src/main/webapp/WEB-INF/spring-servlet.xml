@@ -14,14 +14,15 @@
     <mvc:resources mapping="/**" location="/"/>
     <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
     <context:component-scan base-package="com.tw.core"/>
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/**" />-->
-            <!--<bean class="com.tw.core.interceptor.LoginInterceptor">-->
-            <!--</bean>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean class="com.tw.core.interceptor.LoginInterceptor">
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!--<bean id="openSessionInViewInterceptor" class="org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor">-->
         <!--<property name="sessionFactory">-->
             <!--<ref bean="sessionFactory"></ref>-->

@@ -13,7 +13,7 @@
 </head>
 <body>
 <jsp:include page="/jsp/head.jsp"/>
-<div>
+<div class="container projects">
 <form action="addSchema" method="post">
   <table>
     <tr>

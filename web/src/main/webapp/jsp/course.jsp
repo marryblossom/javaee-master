@@ -14,6 +14,7 @@
 </head>
 <body>
 <jsp:include page="/jsp/head.jsp"/>
+<div class="container projects">
 <form action="addCourse" method="post">
   <table>
     <tr>
@@ -54,6 +55,6 @@
     </tr>
   </c:forEach>
 </table>
-
+</div>
 </body>
 </html>

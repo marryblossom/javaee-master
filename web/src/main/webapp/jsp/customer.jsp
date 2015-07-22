@@ -15,6 +15,8 @@
 </head>
 <body>
 <jsp:include page="/jsp/head.jsp"/>
+<div class="container projects">
+
 <form action="addCustomer" method="post">
   <table>
     <tr>
@@ -29,7 +31,7 @@
     </tr>
   </table>
 </form>
-<table data-toggle="table" data-url="data.json" data-striped="true" data-page-size=3 data-smart-display="true "data-search="true">
+<table data-toggle="table" data-striped="true">
   <tr>
     <td align="center">客户</td>
     <td align="center">简介</td>
@@ -40,7 +42,7 @@
   <c:forEach items="${customers}" var="item" varStatus="status">
     <tr>
 
-      <td width="50px" align="center"><c:out value="${item.name}"/></td>
+      <td width="150px" align="center"><c:out value="${item.name}"/></td>
       <td width="30px" align="center"><c:out value="${item.introduction}"/></td>
       <td width="30px" align="center"><c:out value="${item.state}"/></td>
       <td width="30px" align="center"><a type="button" href="/web/customerOperate/deleteCustomer?customerId=<c:out value="${item.customerId}"/>">delete</a></td>
@@ -48,6 +50,6 @@
     </tr>
   </c:forEach>
 </table>
-
+</div>
 </body>
 </html>
