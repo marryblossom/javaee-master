@@ -48,7 +48,7 @@ public class SchemaController {
         data.put("employees",employees);
         return new ModelAndView("schema", data);
     }
-    @RequestMapping("/addSchema")
+    @RequestMapping(value = "/addSchema", method = RequestMethod.POST)
     public ModelAndView addSchema(@RequestParam("courseId")String courseId,
                                   @RequestParam("coachId")String coachId,
                                   @RequestParam("date")String date) {
@@ -56,9 +56,7 @@ public class SchemaController {
         UUID schemaId = new UUID(6,6);
         Employee employee = employeeService.getEmployeeById(coachId);
         if (schemaService.schemaAtThisTimeExist(employee,DateParseHelper.datePasrser(date))){
-            System.out.println("has existed~~~~~~~~~~~~~~~~");
         }else{
-            System.out.println("nothing existed~~~~~~~~~~~~~~~~");
             schema.setSchemaId(schemaId.randomUUID().toString());
             schema.setCourse(courseService.getCourseById(courseId));
             schema.setEmployee(employeeService.getEmployeeById(coachId));

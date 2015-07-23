@@ -48,7 +48,7 @@ public class CustomerController {
     @RequestMapping("/deleteCustomer")
     public ModelAndView deleteCustomer(@RequestParam("customerId")String customerId) {
         Customer customer = customerService.getCustomerById(customerId);
-        customer.setState("block");
+        customer.setState("locked");
         List<Schema> schemas = schemaService.getSchemasByCustomer(customer);
         schemaService.deleteAllSchemas(schemas);
         customerService.updateCustomer(customer);

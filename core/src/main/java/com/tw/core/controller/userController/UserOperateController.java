@@ -10,6 +10,7 @@ import com.tw.core.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
@@ -116,5 +117,15 @@ public class UserOperateController {
         employeeService.updateEmployee(employee);
         return new ModelAndView("redirect:/userOperate/hello");
 
+    }
+    @RequestMapping(value = "/unlock", method = RequestMethod.GET)
+    public ModelAndView unlock(@RequestParam("userId")String userId){
+        User user = userService.getUserById(userId);
+        Employee employee = user.getEmployee();
+        user.setState("active");
+        employee.setState("active");
+        userService.updateUser(user);
+        employeeService.updateEmployee(employee);
+        return new ModelAndView("redirect:/userOperate/hello");
     }
 }

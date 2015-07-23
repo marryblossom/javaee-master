@@ -2,25 +2,13 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: marry
-  Date: 7/7/15
-  Time: 11:22 AM
-  To change this template use File | Settings | File Templates.
---%>
 <spring:url value="/lib/css/user.css" var="userCss" />
 <link href="${userCss}" rel="stylesheet">
 <spring:url value="/lib/css/table.css" var="tableCss" />
 <link href="${tableCss}" rel="stylesheet">
 <html>
 <script src=".././lib/js/jquery-1.11.1.min.js"></script>
-<%--<link href=".././lib/css/bootstrap.css" rel="stylesheet"/>--%>
-<%--<script src=".././lib/js/bootstrap.js"></script>--%>
-<%--<script src=".././lib/js/bootstrap-table.js"></script>--%>
 <link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
-<%--<link rel="stylesheet" href=".././lib/css/bootstrap-table.css">--%>
-<%--<script src=".././lib/js/bootstrap.min.js"></script>--%>
 <head>
   <title></title>
 </head>
@@ -51,9 +39,7 @@
           <li>
             <i>简介：</i><span><input class="input-insert-area" type="text" name="introduction" /></span>
           </li>
-          <%--<li>--%>
             <span><input class="input-button" type="submit" value="Submit" /></span>
-          <%--</li>--%>
         </ul>
       </form>
     </div>
@@ -96,6 +82,15 @@
               <th>
                 <div class="th-inner"></div>
               </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
             </tr>
             </thead>
           </table>
@@ -111,6 +106,7 @@
                 <td width="30px" align="center"><div class="th-inner"><c:out value="${item.employee.introduction}"/></div></td>
                 <td width="30px" align="center"><div class="th-inner"><c:out value="${item.employee.state}"/></div></td>
                 <td width="30px" align="center"><div class="th-inner"><c:out value="${item.employee.type}"/></div></td>
+                <td width="30px" align="center"><div class="th-inner"><a class="btn user unlock" type="button" href="/web/userOperate/unlock?userId=<c:out value="${item.userId}"/>">unlock</a></div></td>
                 <td width="30px" align="center"><div class="th-inner"><a class="btn user delete" type="button" href="/web/userOperate/delete?userId=<c:out value="${item.userId}"/>">delete</a></div></td>
                 <td width="30px" align="center"><div class="th-inner"><a class="btn user update" type="button" href="/web/userOperate/goToUpdate?userId=<c:out value="${item.userId}"/>">update</a></div></td>
               </tr>
@@ -118,7 +114,6 @@
           </table>
         </div>
       </div>
-
     </div>
   </div>
 </div>

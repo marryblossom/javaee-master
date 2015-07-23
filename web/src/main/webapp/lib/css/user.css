@@ -13,9 +13,7 @@
     float: inherit;
     position: relative;
     width: 100%;
-    padding: 0;
     padding: 0px 20px;
-    /* background-attachment: fixed; */
     border-bottom: 1px solid #ddd;
 }
 .user-input-info {
@@ -37,8 +35,6 @@
     background-color: #fefefe;
     box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
     border-color: #e5e5e5 #e5e5e5 #e5e5e5 #e5e5e5;
-    /*background-color: #eff5ef;*/
-
 }
 
 .user-name {

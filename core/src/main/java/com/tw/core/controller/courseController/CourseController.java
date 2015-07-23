@@ -49,7 +49,7 @@ public class CourseController {
     @RequestMapping("/deleteCourse")
     public ModelAndView deleteCourse(@RequestParam("courseId")String courseId) {
         Course course = courseService.getCourseById(courseId);
-        course.setState("block");
+        course.setState("locked");
         courseService.updateCourse(course);
         List<Schema> schemas = schemaService.getSchemasByCourse(course);
         schemaService.deleteAllSchemas(schemas);
