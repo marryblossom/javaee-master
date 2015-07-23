@@ -80,8 +80,7 @@ public class UserOperateController {
                                 @RequestParam("password")String password,
                                 @RequestParam("gender")String gender,
                                 @RequestParam("introduction")String introduction,
-                                @RequestParam("email")String email,
-                                @CookieValue(value="loginUserId", defaultValue="") String userIdInCookie) {
+                                @RequestParam("email")String email) {
         UUID employeeId = new UUID(6, 6);
         Employee employee = new Employee();
         employee.setEmloyeeId(employeeId.randomUUID().toString());

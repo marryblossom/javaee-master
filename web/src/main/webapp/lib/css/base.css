@@ -2,12 +2,7 @@ body {
     margin: 0px;
     font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
 }
-.container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
+
 .input-insert{
     -moz-background-clip: padding;
     -webkit-background-clip: padding;
@@ -102,7 +97,7 @@ body {
     float: right;
     font: 13px/17px Arial,Tahoma,sans-serif;
     font-weight: bold;
-    margin-right: 20px;
+    margin-right: 30px;
     padding: 2px 9px 6px;
     text-align: left;
     -moz-text-shadow: 0px 1px rgba(0,0,0,0.2);
@@ -139,4 +134,11 @@ body {
     border: 1px solid #3263cd;
     color: #fff;
     text-shadow: 0 -1px 0px #3263cd;
+}
+.check-list{
+    color: #606069;
+    height: 10px;
+    margin: 10px 100px;
+    font-size: x-large;
+
 }
