@@ -2,8 +2,6 @@ package com.tw.core.service.userService;
 
 import com.tw.core.bean.User;
 import com.tw.core.service.baseService.BaseService;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**

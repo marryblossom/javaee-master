@@ -1,15 +1,11 @@
 package com.tw.core.service.employeeService.employeeServiceImpl;
 
-import com.tw.core.bean.Course;
 import com.tw.core.bean.Employee;
-import com.tw.core.bean.Schema;
-import com.tw.core.bean.User;
 import com.tw.core.service.baseService.impl.BaseServiceImpl;
 import com.tw.core.service.employeeService.EmployeeService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 

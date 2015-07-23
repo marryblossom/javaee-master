@@ -3,12 +3,9 @@ package com.tw.core.service.schemaService.schemaServiceImpl;
 import com.tw.core.bean.*;
 import com.tw.core.service.baseService.impl.BaseServiceImpl;
 import com.tw.core.service.schemaService.SchemaService;
-import com.tw.core.util.StringSplitHelper;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
-
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

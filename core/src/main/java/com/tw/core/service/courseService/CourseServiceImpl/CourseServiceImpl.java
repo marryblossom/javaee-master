@@ -1,7 +1,6 @@
 package com.tw.core.service.courseService.CourseServiceImpl;
 
 import com.tw.core.bean.Course;
-import com.tw.core.bean.Schema;
 import com.tw.core.service.baseService.impl.BaseServiceImpl;
 import com.tw.core.service.courseService.CourseService;
 import org.hibernate.criterion.DetachedCriteria;

@@ -4,13 +4,8 @@ import com.tw.core.service.baseService.BaseService;
 import com.tw.core.util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.DetachedCriteria;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -24,12 +19,6 @@ public class BaseServiceImpl implements BaseService {
     static {
         session = HibernateUtil.getSessionFactory().openSession();
     }
-  //  @Autowired
- //   private SessionFactory sessionFactory;
-
-//    public Session getCurrentSession() {
-//        return sessionFactory.getCurrentSession();
-//    }
     @Override
     public Session getCurrentSession() {
         return session;

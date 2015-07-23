@@ -2,7 +2,6 @@ package com.tw.core.service.baseService;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
-
 import java.util.List;
 
 /**

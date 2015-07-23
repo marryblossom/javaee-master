@@ -1,19 +1,14 @@
 package com.tw.core.controller.courseController;
 
 import com.tw.core.bean.Course;
-import com.tw.core.bean.Employee;
 import com.tw.core.bean.Schema;
-import com.tw.core.bean.User;
 import com.tw.core.service.courseService.CourseService;
 import com.tw.core.service.schemaService.SchemaService;
-import com.tw.core.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

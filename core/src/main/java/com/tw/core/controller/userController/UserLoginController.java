@@ -1,13 +1,10 @@
 package com.tw.core.controller.userController;
 
 import com.tw.core.bean.User;
-import com.tw.core.business.userLoginService.HelloLoginService;
 import com.tw.core.service.userService.UserLoginService;
-import com.tw.core.util.CookiesHelper;
 import com.tw.core.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;

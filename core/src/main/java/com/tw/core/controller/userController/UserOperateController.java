@@ -1,23 +1,17 @@
 package com.tw.core.controller.userController;
 
-
 import com.tw.core.bean.Employee;
 import com.tw.core.bean.Schema;
 import com.tw.core.bean.User;
 import com.tw.core.service.employeeService.EmployeeService;
 import com.tw.core.service.schemaService.SchemaService;
 import com.tw.core.service.userService.UserService;
-import com.tw.core.util.CookiesHelper;
 import com.tw.core.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,7 +67,6 @@ public class UserOperateController {
         schemaService.deleteAllSchemas(schemas);
         return new ModelAndView("redirect:/userOperate/hello");
     }
-//    @RequestMapping(params = "method=addUserAndEmployee",method = RequestMethod.POST)
     @RequestMapping("/addUserAndEmployee")
     public ModelAndView addUserAndEmployee(@RequestParam("username")String username,
                                 @RequestParam("employeename")String employeename,
@@ -98,65 +91,30 @@ public class UserOperateController {
         user.setEmployee(employee);
         user.setUserName(username);
         user.setState("active");
-//        if (!(personIdInCookie.equals(""))) {
-            employeeService.insertEmployee(employee);
-            userService.insertUser(user);
-            return new ModelAndView("redirect:/userOperate/hello");
-//        } else {
-//            return new ModelAndView("login");
-//        }
+        employeeService.insertEmployee(employee);
+        userService.insertUser(user);
+        return new ModelAndView("redirect:/userOperate/hello");
     }
-//
-//
-//    }
+
     @RequestMapping("/goToUpdate")
-    public ModelAndView goToUpdate(@RequestParam("userId")String userId,
-                                   @CookieValue(value="loginUserId", defaultValue="") String userIdInCookie) {
-//        if (!(userIdInCookie.equals(""))){
+    public ModelAndView goToUpdate(@RequestParam("userId")String userId) {
             User user = userService.getUserById(userId);
             data.put("user",user);
             return new ModelAndView("userUpdate", data);
-//        }
-//        else {
-//            return new ModelAndView("login");
-//        }
     }
     @RequestMapping("/update")
     public ModelAndView update(@RequestParam("userId")String userId,
                                @RequestParam("employeeName")String employeeName,
                                @RequestParam("gender")String gender,
                                @RequestParam("introduction")String introduction,
-                               @RequestParam("email")String email,
-                               @CookieValue(value="loginUserId", defaultValue="") String userIdInCookie) {
-//        if (!(userIdInCookie.equals(""))){
+                               @RequestParam("email")String email) {
         Employee employee = userService.getUserById(userId).getEmployee();
         employee.setEmployeeName(employeeName);
         employee.setGender(gender);
         employee.setEmail(email);
         employee.setIntroduction(introduction);
         employeeService.updateEmployee(employee);
-            return new ModelAndView("redirect:/userOperate/hello");
-//        }else{
-//            return new ModelAndView("login");
-//        }
+        return new ModelAndView("redirect:/userOperate/hello");
 
     }
-//
-//    @RequestMapping("/goToUpdatePassword")
-//    public ModelAndView goToUpdatePassword(@RequestParam("id")String id) {
-//        Person person = personService.getPersonById(id);
-//        data.put("person",person);
-//        return new ModelAndView("changePassword", data);
-//    }
-//    @RequestMapping("/updatePassword")
-//    public ModelAndView updatePassword(@RequestParam("id")String id,
-//                                       @RequestParam("oldPassword")String oldPassword,
-//                                       @RequestParam("newPassword")String newPassword,
-//                                       @CookieValue(value="personid", defaultValue="") String personIdInCookie) {
-//        Person person = personService.getPersonById(id);
-//        person.setPassword(newPassword);
-//        personService.updatePerson(person);
-//        return new ModelAndView("redirect:/hello");
-//    }
-
 }

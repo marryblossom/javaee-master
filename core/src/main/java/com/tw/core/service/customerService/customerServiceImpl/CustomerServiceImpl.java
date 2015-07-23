@@ -1,14 +1,11 @@
 package com.tw.core.service.customerService.customerServiceImpl;
 
-import com.tw.core.bean.Course;
 import com.tw.core.bean.Customer;
-import com.tw.core.bean.Employee;
 import com.tw.core.service.baseService.impl.BaseServiceImpl;
 import com.tw.core.service.customerService.CustomerService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**

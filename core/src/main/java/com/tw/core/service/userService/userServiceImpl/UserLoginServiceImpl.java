@@ -1,13 +1,11 @@
 package com.tw.core.service.userService.userServiceImpl;
 
-import com.tw.core.bean.Schema;
 import com.tw.core.bean.User;
 import com.tw.core.service.baseService.impl.BaseServiceImpl;
 import com.tw.core.service.userService.UserLoginService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
