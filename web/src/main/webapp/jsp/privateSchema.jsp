@@ -3,11 +3,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <script src=".././lib/js/jquery-1.11.1.min.js"></script>
-<link href=".././lib/css/bootstrap.css" rel="stylesheet"/>
-<script src=".././lib/js/bootstrap-table.js"></script>
+<%--<link href=".././lib/css/bootstrap.css" rel="stylesheet"/>--%>
+<%--<script src=".././lib/js/bootstrap-table.js"></script>--%>
 <link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href=".././lib/css/bootstrap-table.css">
-<script src=".././lib/js/bootstrap.min.js"></script>
+<%--<link rel="stylesheet" href=".././lib/css/bootstrap-table.css">--%>
+<%--<script src=".././lib/js/bootstrap.min.js"></script>--%>
 <head>
   <title></title>
 </head>
@@ -74,8 +74,8 @@
         <td width="30px" align="center"><c:out value="${item.customer.name}"/></td>
         <td width="30px" align="center"><c:out value="${item.date}"/></td>
         <td width="30px" align="center"><c:out value="${item.state}"/></td>
-        <td width="50px" align="center"><a type="button" href="/web/schemaOperate/deleteSchema?schemaId=<c:out value="${item.schemaId}"/>">delete</a></td>
-        <td width="50px" align="center"><a type="button" href="/web/schemaOperate/goToSchemaUpdate?schemaId=<c:out value="${item.schemaId}"/>">update</a></td>
+        <td width="50px" align="center"><a type="button" href="/web/schemaOperate/deleteSchema?schemasId=<c:out value="${item.schemaId}"/>">delete</a></td>
+        <td width="50px" align="center"><a type="button" href="/web/schemaOperate/goToSchemaUpdate?schemasId=<c:out value="${item.schemaId}"/>">update</a></td>
       </tr>
     </c:forEach>
   </table>

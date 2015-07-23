@@ -1,0 +1,41 @@
+.insert-input {
+    text-align: center;
+    background-color: #f5f5f5;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-container {
+    background-color: inherit;
+    float: left;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    background-attachment: fixed;
+    border-bottom: 1px solid #ddd;
+}
+.user-input-info {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.user-input-info li {
+    display: inline-block;
+    line-height: 1;
+    color: #555;
+}
+.user-name {
+    padding: 2px 0;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+.user-input-info>li+li:before {
+    padding: 0 2px;
+    color: #ccc;
+    content: "|";
+}
+.middle{
+    height: 0px;
+    margin-top: 10px;
+}

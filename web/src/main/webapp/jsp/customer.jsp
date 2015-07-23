@@ -2,13 +2,13 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<script src=".././lib/js/jquery-1.11.1.min.js"></script>
-<link href=".././lib/css/bootstrap.css" rel="stylesheet"/>
-<script src=".././lib/js/bootstrap.js"></script>
-<script src=".././lib/js/bootstrap-table.js"></script>
-<link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href=".././lib/css/bootstrap-table.css">
-<script src=".././lib/js/bootstrap.min.js"></script>
+<%--<script src=".././lib/js/jquery-1.11.1.min.js"></script>--%>
+<%--<link href=".././lib/css/bootstrap.css" rel="stylesheet"/>--%>
+<%--<script src=".././lib/js/bootstrap.js"></script>--%>
+<%--<script src=".././lib/js/bootstrap-table.js"></script>--%>
+<%--<link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">--%>
+<%--<link rel="stylesheet" href=".././lib/css/bootstrap-table.css">--%>
+<%--<script src=".././lib/js/bootstrap.min.js"></script>--%>
 <head>
   <title></title>
 

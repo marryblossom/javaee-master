@@ -2,27 +2,23 @@ package com.tw.core.interceptor;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.logging.Logger;
-
 /**
  * Created by marry on 7/20/15.
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-//    private static Logger logger = Logger.getLogger("LoginInterceptor");
 @Override
 public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
     HttpSession session = request.getSession();
-
+    session.setAttribute("prePage","");
     if (request.getRequestURI().toString().contains("userLogin")){
         return true;
     }
 
     if (session.getAttribute("userLogin") != null){
+
         return true;
     }else {
         session.setAttribute("prePage",request.getRequestURI().substring(5));

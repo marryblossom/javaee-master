@@ -41,6 +41,7 @@ public class UserLoginController {
         HttpSession session = request.getSession();
         if (user != null){
             session.setAttribute("userLogin", "true");
+            System.out.println(session.getAttribute("prePage").toString());
             return new ModelAndView("redirect:/" + getPreUrl(session.getAttribute("prePage").toString()));
         }else {
             return new ModelAndView("redirect:/userLogin/goToLogin");
@@ -49,7 +50,8 @@ public class UserLoginController {
 
     @RequestMapping("/logout")
     public ModelAndView logout(HttpServletRequest request,HttpServletResponse response) {
-        CookiesHelper.deleteCookies(request,response,"loginUserId");
+        HttpSession session = request.getSession();
+        session.removeAttribute("userLogin");
         return new ModelAndView("login");
     }
 

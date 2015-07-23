@@ -1,5 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
   User: marry
@@ -7,13 +9,11 @@
   Time: 11:22 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<spring:url value="/lib/css/user.css" var="userCss" />
+<link href="${userCss}" rel="stylesheet">
 <html>
 <head>
-
     <title></title>
-
 </head>
 <body>
 <jsp:include page="/jsp/head.jsp"/>

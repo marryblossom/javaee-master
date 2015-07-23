@@ -4,13 +4,13 @@
 <html>
 <head>
   <title></title>
-  <script src=".././lib/js/jquery-1.11.1.min.js"></script>
-  <link href=".././lib/css/bootstrap.css" rel="stylesheet"/>
-  <script src=".././lib/js/bootstrap.js"></script>
-  <script src=".././lib/js/bootstrap-table.js"></script>
-  <link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href=".././lib/css/bootstrap-table.css">
-  <script src=".././lib/js/bootstrap.min.js"></script>
+  <%--<script src=".././lib/js/jquery-1.11.1.min.js"></script>--%>
+  <%--<link href=".././lib/css/bootstrap.css" rel="stylesheet"/>--%>
+  <%--<script src=".././lib/js/bootstrap.js"></script>--%>
+  <%--<script src=".././lib/js/bootstrap-table.js"></script>--%>
+  <%--<link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">--%>
+  <%--<link rel="stylesheet" href=".././lib/css/bootstrap-table.css">--%>
+  <%--<script src=".././lib/js/bootstrap.min.js"></script>--%>
 </head>
 <body>
 <jsp:include page="/jsp/head.jsp"/>

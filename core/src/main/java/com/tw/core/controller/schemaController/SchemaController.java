@@ -82,8 +82,8 @@ public class SchemaController {
     @RequestMapping("/goToSchemaUpdate")
     public ModelAndView goToSchemaUpdate(@RequestParam("schemasId")String schemasId,
                                          @CookieValue(value="loginId", defaultValue="") String userIdInCookie) {
-        List<Schema> schemas = schemaService.getSchemaTablesByIds(schemasId);
-        data.put("schemas", schemas);
+        Schema schema = schemaService.getSchemaById(schemasId);
+        data.put("schema", schema);
         return new ModelAndView("schemaUpdate", data);
     }
     @RequestMapping("/schemaUpdate")
