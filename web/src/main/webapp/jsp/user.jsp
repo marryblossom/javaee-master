@@ -2,13 +2,15 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
+<script src=".././lib/js/jquery-1.11.1.min.js"></script>
+<link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
+<script src=".././lib/js/user.js"></script>
 <spring:url value="/lib/css/user.css" var="userCss" />
 <link href="${userCss}" rel="stylesheet">
 <spring:url value="/lib/css/table.css" var="tableCss" />
 <link href="${tableCss}" rel="stylesheet">
-<html>
-<script src=".././lib/js/jquery-1.11.1.min.js"></script>
-<link href=".././calendar/styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
 <head>
   <title></title>
 </head>
@@ -85,39 +87,36 @@
               <th>
                 <div class="th-inner"></div>
               </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
             </tr>
             </thead>
           </table>
         </div>
         <div class="table-body-inner">
+          <form method="post">
           <table class="table-body">
             <c:forEach items="${users}" var="item" varStatus="status">
-              <tr>
-                <td width="50px" align="center"> <div class="th-inner"><c:out value="${item.userName}"/></div></td>
-                <td width="30px" align="center"><div class="th-inner"><c:out value="${item.employee.employeeName}"/></div></td>
-                <td width="30px" align="center"><div class="th-inner"><c:out value="${item.employee.gender}"/></div></td>
-                <td width="30px" align="center"><div class="th-inner"><c:out value="${item.employee.email}"/></div></td>
-                <td width="30px" align="center"><div class="th-inner"><c:out value="${item.employee.introduction}"/></div></td>
-                <td width="30px" align="center"><div class="th-inner"><c:out value="${item.employee.state}"/></div></td>
-                <td width="30px" align="center"><div class="th-inner"><c:out value="${item.employee.type}"/></div></td>
-                <td width="30px" align="center"><div class="th-inner"><a class="btn user unlock" type="button" href="/web/userOperate/unlock?userId=<c:out value="${item.userId}"/>">unlock</a></div></td>
-                <td width="30px" align="center"><div class="th-inner"><a class="btn user delete" type="button" href="/web/userOperate/delete?userId=<c:out value="${item.userId}"/>">delete</a></div></td>
-                <td width="30px" align="center"><div class="th-inner"><a class="btn user update" type="button" href="/web/userOperate/goToUpdate?userId=<c:out value="${item.userId}"/>">update</a></div></td>
+              <tr id="tr${item.userId}">
+                <td align="center"> <div class="th-inner"><c:out value="${item.userName}"/></div></td>
+                <td align="center"><div class="th-inner"><c:out value="${item.employee.employeeName}"/></div></td>
+                <td align="center"><div class="th-inner"><c:out value="${item.employee.gender}"/></div></td>
+                <td align="center"><div class="th-inner"><c:out value="${item.employee.email}"/></div></td>
+                <td align="center"><div class="th-inner"><c:out value="${item.employee.introduction}"/></div></td>
+                <td align="center"><div id="state${item.userId}" class="th-inner"><c:out value="${item.employee.state}"/></div></td>
+                <td align="center"><div class="th-inner"><c:out value="${item.employee.type}"/></div></td>
+                <td align="center"><div class="th-inner"><a name="unlock" class="btn user unlock" type="button" value="${item.userId}">unlock</a></div></td>
+                  <td align="center"><div class="th-inner"><a name="delete" class="btn user delete" type="button" value="${item.userId}">delete</a></div></td>
+                <td align="center"><div class="th-inner"><a name="goToUpdate" class="btn user update" type="button" value="${item.userId}">update</a></div></td>
+              <%--<td width="30px" align="center"><div class="th-inner"><a id="unlock" class="btn user unlock" type="button" onclick="goToUnlock(${item.userId})">unlock</a></div></td>--%>
+                <%--<td width="30px" align="center"><div class="th-inner"><a name="delete" class="btn user delete" type="button" href="/web/userOperate/delete?userId=<c:out value="${item.userId}"/>">delete</a></div></td>--%>
+                <%--<td width="30px" align="center"><div class="th-inner"><a class="btn user update" type="button" href="/web/userOperate/goToUpdate?userId=<c:out value="${item.userId}"/>">update</a></div></td>--%>
               </tr>
             </c:forEach>
           </table>
+          </form>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
 </body>
 </html>

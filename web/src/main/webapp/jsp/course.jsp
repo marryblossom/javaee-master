@@ -54,6 +54,39 @@
               <th>
                 <div class="th-inner"></div>
               </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
+              <th>
+                <div class="th-inner"></div>
+              </th>
             </tr>
             </thead>
           </table>
@@ -65,6 +98,7 @@
                 <td width="50px" align="center"> <div class="th-inner"><c:out value="${item.name}"/></div></td>
                 <td width="30px" align="center"><div class="th-inner"><c:out value="${item.introduction}"/></div></td>
                 <td width="30px" align="center"><div class="th-inner"><c:out value="${item.state}"/></div></td>
+                <td width="30px" align="center"><div class="th-inner"><a class="btn user unlock" type="button" href="/web/courseOperate/unlockCourse?courseId=<c:out value="${item.courseId}"/>">unlock</a></div></td>
                 <td width="30px" align="center"><div class="th-inner"><a class="btn user delete" type="button" href="/web/courseOperate/deleteCourse?courseId=<c:out value="${item.courseId}"/>">delete</a></div></td>
                 <td width="30px" align="center"><div class="th-inner"><a class="btn user update" type="button" href="/web/courseOperate/goToCourseUpdate?courseId=<c:out value="${item.courseId}"/>">update</a></div></td>
               </tr>

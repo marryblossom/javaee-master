@@ -7,6 +7,7 @@ import com.tw.core.service.schemaService.SchemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
@@ -69,6 +70,13 @@ public class CustomerController {
         Customer customer = customerService.getCustomerById(customerId);
         data.put("customer", customer);
         return new ModelAndView("customerUpdate", data);
+    }
+    @RequestMapping(value = "/unlockCustomer", method = RequestMethod.GET)
+    public ModelAndView unlock(@RequestParam("customerId")String customerId){
+        Customer customer = customerService.getCustomerById(customerId);
+        customer.setState("active");
+        customerService.updateCustomer(customer);
+        return new ModelAndView("redirect:/customerOperate/customerShow");
     }
 
 }
