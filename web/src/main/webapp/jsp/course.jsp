@@ -5,6 +5,7 @@
 <html>
 <head>
   <title></title>
+  <%--<script src=".././lib/js/course.js"></script>--%>
   <spring:url value="/lib/css/user.css" var="userCss" />
   <link href="${userCss}" rel="stylesheet">
   <spring:url value="/lib/css/table.css" var="tableCss" />
@@ -51,42 +52,6 @@
               <th>
                 <div class="th-inner"></div>
               </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
-              <th>
-                <div class="th-inner"></div>
-              </th>
             </tr>
             </thead>
           </table>
@@ -95,12 +60,14 @@
           <table class="table-body">
             <c:forEach items="${courses}" var="item" varStatus="status">
               <tr>
-                <td width="50px" align="center"> <div class="th-inner"><c:out value="${item.name}"/></div></td>
-                <td width="30px" align="center"><div class="th-inner"><c:out value="${item.introduction}"/></div></td>
-                <td width="30px" align="center"><div class="th-inner"><c:out value="${item.state}"/></div></td>
+                <td  align="center"> <div class="th-inner"><c:out value="${item.name}"/></div></td>
+                <td  align="center"><div class="th-inner"><c:out value="${item.introduction}"/></div></td>
+                <td  align="center"><div id="state${item.courseId}" class="th-inner"><c:out value="${item.state}"/></div></td>
+                <%--<td  width="10px" align="center"><div class="th-inner"><a name="unlock" class="btn user unlock" type="button" value="${item.courseId}">unlock</a></div></td>--%>
+
                 <td width="30px" align="center"><div class="th-inner"><a class="btn user unlock" type="button" href="/web/courseOperate/unlockCourse?courseId=<c:out value="${item.courseId}"/>">unlock</a></div></td>
-                <td width="30px" align="center"><div class="th-inner"><a class="btn user delete" type="button" href="/web/courseOperate/deleteCourse?courseId=<c:out value="${item.courseId}"/>">delete</a></div></td>
-                <td width="30px" align="center"><div class="th-inner"><a class="btn user update" type="button" href="/web/courseOperate/goToCourseUpdate?courseId=<c:out value="${item.courseId}"/>">update</a></div></td>
+                <td width="10px"  align="center"><div class="th-inner"><a class="btn user delete" type="button" href="/web/courseOperate/deleteCourse?courseId=<c:out value="${item.courseId}"/>">delete</a></div></td>
+                <td width="10px" align="center"><div class="th-inner"><a class="btn user update" type="button" href="/web/courseOperate/goToCourseUpdate?courseId=<c:out value="${item.courseId}"/>">update</a></div></td>
               </tr>
             </c:forEach>
           </table>

@@ -1,0 +1,95 @@
+<div class="insert-input" >
+    <div class="user-container">
+        <div class="user-insert-input">
+            <form action="addUserAndEmployee" method="post">
+                <ul class="user-input-info">
+                    <li>
+                        <i>姓名：</i><span><input class="input-insert" type="text" name="username"/></span>
+                    </li>
+                    <li>
+                        <i>用户名：</i><span><input class="input-insert" type="text" name="employeename"/></span>
+                    </li>
+                    <li>
+                        <i>密码：</i><span><input class="input-insert" type="password" name="password"/></span>
+                    </li>
+
+                    <li>
+                        <i>性别：</i><span><input class="input-insert" type="radio" name="gender" value="male" /> male
+            <input type="radio" name="gender" value="female" /> female</span>
+                    </li>
+                    <li>
+                        <i>邮箱：</i><span><input class="input-insert" type="text" name="email" /></span>
+                    </li>
+                    <li>
+                        <i>简介：</i><span><input class="input-insert-area" type="text" name="introduction" /></span>
+                    </li>
+                    <span><input class="input-button" type="submit" value="Submit" /></span>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="data-show">
+    <div class="table">
+        <div class="table-container">
+            <div class="table-title">
+                <div class="table-header-inner">
+                    <table class="table-header">
+                        <thead>
+                        <tr>
+                            <th>
+                                <div class="th-inner">姓名</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">用户名</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">性别</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">邮箱</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">简介</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">状态</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">职位</div>
+                            </th>
+                            <th>
+                                <div class="th-inner"></div>
+                            </th>
+                            <th>
+                                <div class="th-inner"></div>
+                            </th>
+                            <th>
+                                <div class="th-inner"></div>
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="table-body-inner">
+                    <form id="update-form" method="post">
+                        <table class="table-body" np-controller="userController">
+                                <tr ng-repeat="user in users">
+                                    <td align="center"> <div class="th-inner">{{user.userName}}</div></td>
+                                    <td align="center"> <div class="th-inner">{{user.employee.employeeName}}</div></td>
+                                    <td align="center"> <div class="th-inner">{{user.employee.gender}}</div></td>
+                                    <td align="center"> <div class="th-inner">{{user.employee.email}}</div></td>
+                                    <td align="center"> <div class="th-inner">{{user.employee.introduction}}</div></td>
+                                    <td align="center"> <div class="th-inner">{{user.employee.state}}</div></td>
+                                    <td align="center"> <div class="th-inner">{{user.employee.type}}</div></td>
+                                    <td align="center"><div class="th-inner"><a name="unlock" class="btn user unlock" type="button" value="{{user.userId}}">unlock</a></div></td>
+                                    <td align="center"><div class="th-inner"><a name="delete" class="btn user delete" type="button" value="${user.userId}">delete</a></div></td>
+                                    <td align="center"><div class="th-inner"><a name="goToUpdate" class="btn user update" type="button" value="${item.userId}">update</a></div></td>
+                                </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

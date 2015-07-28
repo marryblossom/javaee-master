@@ -1,5 +1,7 @@
 package com.tw.core.controller.userController;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.tw.core.bean.Employee;
 import com.tw.core.bean.Schema;
 import com.tw.core.bean.User;
@@ -8,12 +10,15 @@ import com.tw.core.org.json.JSONObject;
 import com.tw.core.service.employeeService.EmployeeService;
 import com.tw.core.service.schemaService.SchemaService;
 import com.tw.core.service.userService.UserService;
+import com.tw.core.util.HibernateProxyTypeAdapter;
 import com.tw.core.util.MD5Util;
+import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -37,13 +42,11 @@ public class UserOperateController {
     private EmployeeService employeeService;
     @Autowired
     private SchemaService schemaService;
-    Map<String,Object> data = new HashMap<String,Object>();
-
-    @RequestMapping("/hello")
-    public ModelAndView hello() {
+    JSONSerializer j = new JSONSerializer();
+    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    public @ResponseBody String hello() {
         List<User> users = userService.getUsers();
-        data.put("users", users);
-        return new ModelAndView("user", data);
+        return j.include("employee").serialize(users);
 
     }
     @RequestMapping(value = "/delete",method = RequestMethod.GET)
@@ -92,7 +95,11 @@ public class UserOperateController {
 
     @RequestMapping(value = "/goToUpdate", method = RequestMethod.POST)
     public ModelAndView goToUpdate(@RequestParam String userId,HttpServletResponse response) {
-            User user = userService.getUserById(userId);
+        User user = userService.getUserById(userId);
+//        Gson gson = new GsonBuilder().setExcludeStrategy(ts).registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY)
+//                .create();
+//        gson.toJson(user);
+//        schedulestr += gson.toJson(courseService.getCourses());
         try {
             JSONObject userJson = new JSONObject("{'userId':'"+user.getUserId()+
                                                     "','userName':'"+user.getUserName() +
@@ -105,7 +112,7 @@ public class UserOperateController {
                                                     "'}");
             response.setContentType("text/html;charset=utf-8");
             response.getWriter().write(userJson.toString());
-        } catch (JSONException e) {
+        } catch(JSONException e){
             e.printStackTrace();
         }catch (IOException e){
             e.printStackTrace();
@@ -137,6 +144,7 @@ public class UserOperateController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView update(@RequestParam String userId, String userName, String employeeName, String gender,
                                String userIntroduction, String userEmail,HttpServletResponse response) {
+
         User user = userService.getUserById(userId);
         Employee employee = userService.getUserById(userId).getEmployee();
         user.setUserName(userName);

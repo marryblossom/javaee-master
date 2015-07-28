@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en">
+    <meta charset="utf-8">
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=GBK">-->
+    <title>My HTML File</title>
+    <!--<link rel="stylesheet" href="/web/angular/app.css">-->
+    <!--<link rel="stylesheet" href="lib/css/bootstrap.css">-->
+    <link href="lib/css/header.css" rel="stylesheet" type="text/css">
+    <link href="lib/css/base.css" rel="stylesheet" type="text/css">
+    <link href="lib/css/user.css" rel="stylesheet" type="text/css">
+    <link href="lib/css/table.css" rel="stylesheet" type="text/css">
+
+    <title></title>
+    <script>
+
+    </script>
+</head>
+
+<body ng-app="user_manager" >
+<div class="header-panel">
+    <div class="header-container">
+        <div class="navbar-list">
+            <nav class="navlist">
+                <ul>
+                    <li><a class="header-a" type="button" href="/web">主页</a></li>
+                    <li><a class="header-a" href="#/userOperate/hello">雇员管理</a></li>
+                    <li><a class="header-a" href="/web/courseOperate">课程管理</a></li>
+                    <li><a class="header-a" href="/web/schemaOperate">课表管理</a></li>
+                    <li><a class="header-a" href="/web/customerOperate">客户管理</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="navlist-login">
+            <nav class="login-reminder">
+                <ul><li>
+                        <a class="header-login-a" type="button" href="/web/userLogin/logout">logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<div ng-view></div>
+    <script src="angular/angular.js"></script>
+<script src="angular/angular-route.min.js"></script>
+<script src="controller/usersController.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 public class User implements java.io.Serializable {
 
 	private String userId;
+
+	//	@Autowired
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(referencedColumnName = "employeeId")
 	private Employee employee;
@@ -49,7 +51,7 @@ public class User implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	@Autowired
+
 	public Employee getEmployee() {
 		return this.employee;
 	}

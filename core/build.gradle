@@ -12,6 +12,7 @@ buildscript {
 }
 
 dependencies{
+    compile 'net.sf.flexjson:flexjson:3.3'
     compile 'mysql:mysql-connector-java:5.1.6'
     compile 'org.hibernate:hibernate-core:4.3.10.Final'
     compile 'taglibs:standard:1.1.2'
