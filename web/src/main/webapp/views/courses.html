@@ -1,0 +1,59 @@
+<div class="insert-input">
+    <div class="user-container">
+        <div class="user-insert-input">
+            <form>
+                <ul class="user-input-info">
+                    <li>
+                        <i>课程名称：</i><span><input class="input-insert" type="text" name="courseName" ng-model="courseName"/></span>
+                    </li>
+                    <li>
+                        <i>课程简介：</i><span><input class="input-insert" type="text" name="introduction" ng-model="introduction"/></span>
+                    </li>
+                    <span><input class="input-button" type="submit" value="Submit" ng-click="courseAdd()"/></span>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<div class="data-show">
+    <p class="check-list">健身房课程</p>
+    <div class="table">
+        <div class="table-container">
+            <div class="table-title">
+                <div class="table-header-inner">
+                    <table class="table-header">
+                        <thead>
+                        <tr>
+                            <th>
+                                <div class="th-inner">课程名称</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">课程简介</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">课程状态</div>
+                            </th>
+                            <th>
+                                <div class="th-inner"></div>
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="table-body-inner">
+                    <table class="table-body" ng-controller="coursesShowController">
+                            <tr ng-repeat="course in courses">
+                                <td  align="center"> <div class="th-inner">{{course.name}}</div></td>
+                                <td  align="center"><div class="th-inner">{{course.introduction}}</div></td>
+                                <td  align="center"><div class="th-inner">{{course.state}}</div></td>
+                                <td width="30px" align="center"><div class="th-inner"><a class="btn user unlock" type="button" ng-click="courseUnlock(course.courseId)">unlock</a></div></td>
+                                <td width="10px"  align="center"><div class="th-inner"><a class="btn user delete" type="button" ng-click="courseDelete(course.courseId)">delete</a></div></td>
+                                <td width="10px" align="center"><div class="th-inner"><a class="btn user update" type="button" href="#/courseOperate/goToCourseUpdate">update</a></div></td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

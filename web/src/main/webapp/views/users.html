@@ -1,35 +1,36 @@
 <div class="insert-input" >
     <div class="user-container">
         <div class="user-insert-input">
-            <form action="addUserAndEmployee" method="post">
+            <form>
                 <ul class="user-input-info">
                     <li>
-                        <i>姓名：</i><span><input class="input-insert" type="text" name="username"/></span>
+                        <i>姓名：</i><span><input class="input-insert" type="text" name="username" ng-model="userName"/></span>
                     </li>
                     <li>
-                        <i>用户名：</i><span><input class="input-insert" type="text" name="employeename"/></span>
+                        <i>用户名：</i><span><input class="input-insert" type="text" name="employeename" ng-model="employeeName"/></span>
                     </li>
                     <li>
-                        <i>密码：</i><span><input class="input-insert" type="password" name="password"/></span>
+                        <i>密码：</i><span><input class="input-insert" type="password" name="password" ng-model="userPass"/></span>
                     </li>
 
                     <li>
-                        <i>性别：</i><span><input class="input-insert" type="radio" name="gender" value="male" /> male
-            <input type="radio" name="gender" value="female" /> female</span>
+                        <i>性别：</i><span><input class="input-insert" type="radio" name="gender" value="male" ng-model="userGender"/> male
+                                            <input type="radio" name="gender" value="female" ng-model="userGender"/> female</span>
                     </li>
                     <li>
-                        <i>邮箱：</i><span><input class="input-insert" type="text" name="email" /></span>
+                        <i>邮箱：</i><span><input class="input-insert" type="text" name="email" ng-model="userEmail"/></span>
                     </li>
                     <li>
-                        <i>简介：</i><span><input class="input-insert-area" type="text" name="introduction" /></span>
+                        <i>简介：</i><span><input class="input-insert-area" type="text" name="introduction" ng-model="userIntroduction"/></span>
                     </li>
-                    <span><input class="input-button" type="submit" value="Submit" /></span>
+                    <span><input class="input-button" type="submit" value="Submit" ng-click="userAdd()"/></span>
                 </ul>
             </form>
         </div>
     </div>
 </div>
 <div class="data-show">
+    <p class="check-list">雇员列表</p>
     <div class="table">
         <div class="table-container">
             <div class="table-title">
@@ -58,23 +59,19 @@
                             <th>
                                 <div class="th-inner">职位</div>
                             </th>
-                            <th>
+                            <th width="90px">
                                 <div class="th-inner"></div>
                             </th>
-                            <th>
-                                <div class="th-inner"></div>
-                            </th>
-                            <th>
-                                <div class="th-inner"></div>
-                            </th>
+
                         </tr>
                         </thead>
                     </table>
                 </div>
                 <div class="table-body-inner">
                     <form id="update-form" method="post">
-                        <table class="table-body" np-controller="userController">
-                                <tr ng-repeat="user in users">
+                        <table class="table-body" ng-controller="usersShowController">
+                                <tr ng-repeat="user in users" id="tr{{user.userId}}">
+                                    <td align="center" ng-model="userId" hidden> <div class="th-inner">{{user.userId}}</div></td>
                                     <td align="center"> <div class="th-inner">{{user.userName}}</div></td>
                                     <td align="center"> <div class="th-inner">{{user.employee.employeeName}}</div></td>
                                     <td align="center"> <div class="th-inner">{{user.employee.gender}}</div></td>
@@ -82,9 +79,9 @@
                                     <td align="center"> <div class="th-inner">{{user.employee.introduction}}</div></td>
                                     <td align="center"> <div class="th-inner">{{user.employee.state}}</div></td>
                                     <td align="center"> <div class="th-inner">{{user.employee.type}}</div></td>
-                                    <td align="center"><div class="th-inner"><a name="unlock" class="btn user unlock" type="button" value="{{user.userId}}">unlock</a></div></td>
-                                    <td align="center"><div class="th-inner"><a name="delete" class="btn user delete" type="button" value="${user.userId}">delete</a></div></td>
-                                    <td align="center"><div class="th-inner"><a name="goToUpdate" class="btn user update" type="button" value="${item.userId}">update</a></div></td>
+                                    <td width="15px" align="center"><div class="th-inner"><a name="unlock" class="btn user unlock" type="button" ng-click="userUnlock(user.userId)">unlock</a></div></td>
+                                    <td width="15px" align="center"><div class="th-inner"><a name="delete" class="btn user delete" type="button" ng-click="userDelete(user.userId)">delete</a></div></td>
+                                    <td width="15px" align="center"><div class="th-inner"><a name="goToUpdate" class="btn user update" type="button" value="{{user.userId}}">update</a></div></td>
                                 </tr>
                         </table>
                     </form>

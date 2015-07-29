@@ -117,3 +117,36 @@
 //    $(tr).append("<td align=\"center\"><div class=\"th-inner\"><a name='cancel' class='btn user notUpdate' type='button' value='" +result.userId+"'>cancel</a></div></td>");
 //
 //}
+function appendMethod(tr,result){
+    $(tr).empty();
+    $(tr).append("<td align='center'><div class='th-inner'>"+result.userName+"</div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\">"+result.employee.employeeName+"</div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\">"+result.employee.gender+"</div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\">"+result.employee.email+"</div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\">"+result.employee.introduction+"</div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\">"+result.employee.state+"</div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\">"+result.employee.type+"</div></td>");
+    $(tr).append("<td align='center'><div class='th-inner'><a name='unlock' class='btn user unlock' type='button' ng-click='userUnlock(result.userId)' value='"+result.userId+"'>unlock</a></div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\"><a name='delete' class='btn user delete' type='button' ng-click='userDelete(result.userId)' value='" +result.userId+"'>delete</a></div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\"><a name='goToUpdate' class='btn user goToUpdate' type='button' value='" +result.userId+"'>update</a></div></td>");
+
+}
+function appendUpdateMethod(tr,result){
+    $(tr).empty();
+    $(tr).append("<td align='center'><div class='th-inner'><input  name='userName' class='input-insert' type='text' value='"+result.userName+"'></div></td>");
+    $(tr).append("<td align='center'><div class='th-inner'><input name='employeeName' class='input-insert' type='text' value='"+result.employee.employeeName+"'></div></td>");
+    if(result.employee.gender == "female"){
+        $(tr).append("<td align='center'><div class='th-inner'><input name='gender' class='input-insert' type='radio' value='female' checked> female" +
+        "<input name='gender' class='input-insert' type='radio' value='male'>male</div></td>");
+    }else{
+        $(tr).append("<td align='center'><div class='th-inner'><input name='gender' class='input-insert' type='radio' value='female'> female" +
+        "<input name='gender' class='input-insert' type='radio' value='male' checked>male</div></td>");
+    }
+    $(tr).append("<td align='center'><div class='th-inner'><input name='userEmail' class='input-insert' type='text' value='"+result.employee.email+"'></div></td>");
+    $(tr).append("<td align='center'><div class='th-inner'><input name='userIntroduction' class='input-insert' type='text' value='"+result.employee.introduction+"'></div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\">"+result.employee.state+"</div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\">"+result.employee.type+"</div></td>");
+    $(tr).append("<td align='center'><div class='th-inner'><a name='update' class='btn user update' type='button' value='"+result.userId+"'>submit</a></div></td>");
+    $(tr).append("<td align=\"center\"><div class=\"th-inner\"><a name='cancel' class='btn user notUpdate' type='button' value='" +result.userId+"'>cancel</a></div></td>");
+
+}

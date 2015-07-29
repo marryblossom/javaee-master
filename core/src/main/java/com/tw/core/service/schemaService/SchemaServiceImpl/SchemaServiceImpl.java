@@ -137,7 +137,10 @@ public class SchemaServiceImpl extends BaseServiceImpl implements SchemaService{
     }
     @Override
     public void deleteAllSchemas(List<Schema> schemas){
-        deleteAll(schemas);
+        if (schemas.size()>0){
+            deleteAll(schemas);
+
+        }
     }
 
     private String getCourseArrangementTime(List<Schema> schemas,Course course, Employee employee){

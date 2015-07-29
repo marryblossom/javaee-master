@@ -25,9 +25,9 @@
                 <ul>
                     <li><a class="header-a" type="button" href="/web">主页</a></li>
                     <li><a class="header-a" href="#/userOperate/hello">雇员管理</a></li>
-                    <li><a class="header-a" href="/web/courseOperate">课程管理</a></li>
-                    <li><a class="header-a" href="/web/schemaOperate">课表管理</a></li>
-                    <li><a class="header-a" href="/web/customerOperate">客户管理</a></li>
+                    <li><a class="header-a" href="#/courseOperate">课程管理</a></li>
+                    <li><a class="header-a" href="#/schemaOperate">课表管理</a></li>
+                    <li><a class="header-a" href="#/customerOperate">客户管理</a></li>
                 </ul>
             </nav>
         </div>
@@ -44,7 +44,10 @@
 <div ng-view></div>
     <script src="angular/angular.js"></script>
 <script src="angular/angular-route.min.js"></script>
-<script src="controller/usersController.js"></script>
 <script src="app.js"></script>
+<script src="controller/usersController.js"></script>
+<script src="controller/coursesController.js"></script>
+<script src="controller/customerController.js"></script>
+
 </body>
 </html>

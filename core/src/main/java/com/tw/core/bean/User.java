@@ -17,7 +17,7 @@ public class User implements java.io.Serializable {
 	private String userId;
 
 	//	@Autowired
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(referencedColumnName = "employeeId")
 	private Employee employee;
 	private String userName;

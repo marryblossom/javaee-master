@@ -2,8 +2,7 @@ package com.tw.core.bean;
 
 // Generated 2015-7-15 23:47:27 by Hibernate Tools 3.4.0.CR1
 
-import org.hibernate.annotations.Where;
-
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,6 +17,7 @@ public class Course implements java.io.Serializable {
 	private String introduction;
 	private String state;
 	private String type;
+	@OneToMany
 	private Set<Schema> schemas = new HashSet<Schema>(0);
 
 	public Course() {
@@ -28,13 +28,12 @@ public class Course implements java.io.Serializable {
 	}
 
 	public Course(String courseId, String name, String introduction,
-			String state, String type, Set<Schema> schemas) {
+			String state, String type) {
 		this.courseId = courseId;
 		this.name = name;
 		this.introduction = introduction;
 		this.state = state;
 		this.type = type;
-		this.schemas = schemas;
 	}
 
 	public String getCourseId() {

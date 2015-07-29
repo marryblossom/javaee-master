@@ -1,0 +1,56 @@
+<div class="insert-input">
+    <div class="user-container">
+        <div class="user-insert-input">
+            <form>
+                <ul class="user-input-info">
+                    <li>
+                        <i>客户名称：</i><span><input class="input-insert" type="text" name="name" ng-model="customerName"/></span>
+                    </li>
+                    <li>
+                        <i>简介：</i><span><input class="input-insert" type="text" name="introduction" ng-model="introduction"/></span>
+                    </li>
+                    <span><input class="input-button" type="submit" value="Submit" ng-click="customerAdd()"/></span>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<div class="data-show">
+    <p class="check-list">客户信息</p>
+    <div class="table">
+        <div class="table-container">
+            <div class="table-title">
+                <div class="table-header-inner">
+                    <table class="table-header">
+                        <thead>
+                        <tr>
+                            <th>
+                                <div class="th-inner">客户</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">简介</div>
+                            </th>
+                            <th>
+                                <div class="th-inner">状态</div>
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="table-body-inner">
+                    <table class="table-body" ng-controller="customerShowController">
+                            <tr ng-repeat="customer in customers">
+                                <td align="center"> <div class="th-inner">{{customer.name}}</div></td>
+                                <td align="center"><div class="th-inner">{{customer.introduction}}</div></td>
+                                <td align="center"><div class="th-inner">{{customer.state}}</div></td>
+                                <td width="10px" align="center"><div class="th-inner"><a class="btn user unlock" type="button" ng-click="customerUnlock(customer.customerId)">unlock</a></div></td>
+                                <td width="10px" align="center"><div class="th-inner"><a class="btn user delete" type="button" ng-click="customerDelete(customer.customerId)">delete</a></div></td>
+                                <td width="10px" align="center"><div class="th-inner"><a class="btn user update" type="button" ng-click="">update</a></div></td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

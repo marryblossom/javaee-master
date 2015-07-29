@@ -26,14 +26,13 @@ public class Customer implements java.io.Serializable {
 	}
 
 	public Customer(String customerId, String name, String gender,
-			String state, String type, String introduction, Set<Schema> schemas) {
+			String state, String type, String introduction) {
 		this.customerId = customerId;
 		this.name = name;
 		this.gender = gender;
 		this.state = state;
 		this.type = type;
 		this.introduction = introduction;
-		this.schemas = schemas;
 	}
 
 	public String getCustomerId() {

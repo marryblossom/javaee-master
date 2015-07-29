@@ -12,13 +12,11 @@ import com.tw.core.service.schemaService.SchemaService;
 import com.tw.core.service.userService.UserService;
 import com.tw.core.util.HibernateProxyTypeAdapter;
 import com.tw.core.util.MD5Util;
+import com.tw.core.util.StringSplitHelper;
 import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -31,7 +29,7 @@ import java.util.logging.Logger;
 /**
  * Created by marry on 7/15/15.
  */
-@Controller
+@RestController
 @RequestMapping("/userOperate")
 public class UserOperateController {
     private static Logger logger = Logger.getLogger("UserOperateController");
@@ -42,82 +40,57 @@ public class UserOperateController {
     private EmployeeService employeeService;
     @Autowired
     private SchemaService schemaService;
-    JSONSerializer j = new JSONSerializer();
+
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     public @ResponseBody String hello() {
         List<User> users = userService.getUsers();
+        JSONSerializer j = new JSONSerializer();
         return j.include("employee").serialize(users);
 
     }
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public ModelAndView delete(@RequestParam String userId,HttpServletResponse response) {
+    @RequestMapping(value="/{userId}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable String userId) {
         User user = userService.getUserById(userId);
         Employee employee = user.getEmployee();
-
         user.setState("locked");
         employee.setState("locked");
-
         userService.updateUser(user);
         employeeService.updateEmployee(employee);
         List<Schema> schemas = schemaService.getSchemasByEmployee(employee);
         schemaService.deleteAllSchemas(schemas);
-        try {
-            response.getWriter().write(user.getState().toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
     @RequestMapping("/addUserAndEmployee")
-    public ModelAndView addUserAndEmployee(@RequestParam String username, String employeename, String password,
+    public void addUserAndEmployee(@RequestParam String username, String employeename, String password,
                                 String gender, String introduction, String email) {
-        UUID employeeId = new UUID(6, 6);
-        Employee employee = new Employee();
-        employee.setEmloyeeId(employeeId.randomUUID().toString());
-        employee.setEmail(email);
-        employee.setEmployeeName(employeename);
-        employee.setGender(gender);
-        employee.setIntroduction(introduction);
-        employee.setType("coach");
-        employee.setState("active");
-
-        UUID userId = new UUID(6, 6);
-        User user = new User();
-        user.setUserId(userId.randomUUID().toString());
-        user.setPassword(MD5Util.GetMD5Code(password));
-        user.setEmployee(employee);
-        user.setUserName(username);
-        user.setState("active");
+        UUID uuid = new UUID(6,6);
+        Employee employee = new Employee(uuid.randomUUID().toString(),gender,email,introduction,"active","coach",employeename);
+        User user = new User(uuid.randomUUID().toString(),employee,username,MD5Util.GetMD5Code(password),"active","");
         employeeService.insertEmployee(employee);
         userService.insertUser(user);
-        return new ModelAndView("redirect:/userOperate/hello");
     }
 
-    @RequestMapping(value = "/goToUpdate", method = RequestMethod.POST)
-    public ModelAndView goToUpdate(@RequestParam String userId,HttpServletResponse response) {
+    @RequestMapping(value = "/goToUpdate/{userId}", method = RequestMethod.GET)
+    public @ResponseBody String goToUpdate(@PathVariable String userId,HttpServletResponse response) {
         User user = userService.getUserById(userId);
-//        Gson gson = new GsonBuilder().setExcludeStrategy(ts).registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY)
-//                .create();
-//        gson.toJson(user);
-//        schedulestr += gson.toJson(courseService.getCourses());
-        try {
-            JSONObject userJson = new JSONObject("{'userId':'"+user.getUserId()+
-                                                    "','userName':'"+user.getUserName() +
-                                                    "','employeeName':'"+user.getEmployee().getEmployeeName()+
-                                                    "','gender':'"+user.getEmployee().getGender()+
-                                                    "','email':'"+user.getEmployee().getEmail()+
-                                                    "','introduction':'"+user.getEmployee().getIntroduction()+
-                                                    "','userState':'"+user.getEmployee().getState()+
-                                                    "','userType':'"+user.getEmployee().getType()+
-                                                    "'}");
-            response.setContentType("text/html;charset=utf-8");
-            response.getWriter().write(userJson.toString());
-        } catch(JSONException e){
-            e.printStackTrace();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        return null;
+//        try {
+//            JSONObject userJson = new JSONObject("{'userId':'"+user.getUserId()+
+//                                                    "','userName':'"+user.getUserName() +
+//                                                    "','employeeName':'"+user.getEmployee().getEmployeeName()+
+//                                                    "','gender':'"+user.getEmployee().getGender()+
+//                                                    "','email':'"+user.getEmployee().getEmail()+
+//                                                    "','introduction':'"+user.getEmployee().getIntroduction()+
+//                                                    "','userState':'"+user.getEmployee().getState()+
+//                                                    "','userType':'"+user.getEmployee().getType()+
+//                                                    "'}");
+//            response.setContentType("text/html;charset=utf-8");
+//            response.getWriter().write(userJson.toString());
+//        } catch(JSONException e){
+//            e.printStackTrace();
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+        JSONSerializer j = new JSONSerializer();
+        return j.include("employee").serialize(user);
     }
     @RequestMapping(value = "/cancel", method = RequestMethod.POST)
     public ModelAndView cancel(@RequestParam String userId,HttpServletResponse response) {
@@ -175,19 +148,13 @@ public class UserOperateController {
         return null;
 
     }
-    @RequestMapping(value = "/unlock", method = RequestMethod.GET)
-    public ModelAndView unlock(@RequestParam String userId,HttpServletResponse response){
+    @RequestMapping(value = "/unlock/{userId}", method = RequestMethod.GET)
+    public void unlock(@PathVariable String userId){
         User user = userService.getUserById(userId);
         Employee employee = user.getEmployee();
         user.setState("active");
         employee.setState("active");
         userService.updateUser(user);
         employeeService.updateEmployee(employee);
-        try {
-            response.getWriter().write(user.getState().toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

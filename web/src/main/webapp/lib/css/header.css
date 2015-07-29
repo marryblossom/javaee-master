@@ -46,6 +46,7 @@ nav.login-reminder {
 
 nav > ul > li > .header-a {
     /*padding-top : 10px;*/
+    margin-right: 15px;
     padding-left: 30px;
     display: block;
     font-size: 20px;

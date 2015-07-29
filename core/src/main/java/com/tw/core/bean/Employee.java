@@ -29,7 +29,7 @@ public class Employee implements java.io.Serializable {
 
 	public Employee(String emloyeeId, String gender, String email,
 			String introduction, String state, String type,
-			String employeeName, Set<Schema> schemas, Set<User> users) {
+			String employeeName) {
 		this.emloyeeId = emloyeeId;
 		this.gender = gender;
 		this.email = email;
@@ -37,8 +37,6 @@ public class Employee implements java.io.Serializable {
 		this.state = state;
 		this.type = type;
 		this.employeeName = employeeName;
-		this.schemas = schemas;
-		this.users = users;
 	}
 
 
