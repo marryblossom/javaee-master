@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -19,7 +20,8 @@ public class xmlTestController {
         return new ModelAndView("xmlTest");
     }
     @RequestMapping("/xml")
-    public ModelAndView xml(@RequestParam String city,String state,HttpServletResponse response) {
+    public ModelAndView xml(@RequestParam String city,String state,HttpServletResponse response,HttpServletRequest request) {
+//        request.body();
         System.out.println(city);
         response.setContentType("text/html;charset=utf-8");
         try {

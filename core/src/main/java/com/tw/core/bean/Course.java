@@ -17,7 +17,7 @@ public class Course implements java.io.Serializable {
 	private String introduction;
 	private String state;
 	private String type;
-	@OneToMany
+	//@OneToMany
 	private Set<Schema> schemas = new HashSet<Schema>(0);
 
 	public Course() {

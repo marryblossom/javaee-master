@@ -1,7 +1,7 @@
 package com.tw.core.controller.userController;
 
 import com.tw.core.bean.User;
-import com.tw.core.service.userService.UserLoginService;
+import com.tw.core.UserLoginService;
 import com.tw.core.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -43,7 +43,7 @@ public class Schema implements java.io.Serializable {
 	public void setSchemaId(String schemaId) {
 		this.schemaId = schemaId;
 	}
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	public Course getCourse() {
 		return this.course;
 	}
@@ -52,7 +52,7 @@ public class Schema implements java.io.Serializable {
 		this.course = course;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	public Customer getCustomer() {
 		return this.customer;
 	}
@@ -60,7 +60,7 @@ public class Schema implements java.io.Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	public Employee getEmployee() {
 		return this.employee;
 	}

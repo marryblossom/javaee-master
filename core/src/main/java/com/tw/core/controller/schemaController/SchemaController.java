@@ -6,12 +6,10 @@ import com.tw.core.service.customerService.CustomerService;
 import com.tw.core.service.employeeService.EmployeeService;
 import com.tw.core.service.schemaService.SchemaService;
 import com.tw.core.util.DateParseHelper;
+import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +20,7 @@ import java.util.logging.Logger;
 /**
  * Created by marry on 7/19/15.
  */
-@Controller
+@RestController
 @RequestMapping("/schemaOperate")
 public class SchemaController {
     private static Logger logger = Logger.getLogger("SchemaController");
@@ -32,29 +30,34 @@ public class SchemaController {
     private CourseService courseService;
     @Autowired
     private EmployeeService employeeService;
-    @Autowired
-    private CustomerService customerService;
     Map<String,Object> data = new HashMap<String,Object>();
+
     @RequestMapping(value = "/schemaShow", method= RequestMethod.GET)
-    public ModelAndView schemaShow() {
+    public @ResponseBody String schemaShow() {
+        JSONSerializer j = new JSONSerializer();
         List<Schema> schemas = schemaService.getSchemas();
-
-//        List<SchemaTable> schemaTables = schemaService.getAllSchemaTables();
-        List<Course> courses = courseService.getCoursesOnlyActive();
+//        return "1234";
+        return j.include("employee","course").serialize(schemas);
+    }
+    @RequestMapping(value = "/schemaEmployeeShow", method= RequestMethod.GET)
+    public @ResponseBody String schemaEmployeeShow() {
+        JSONSerializer j = new JSONSerializer();
         List<Employee> employees = employeeService.getEmployeesOnlyActive();
-
-        data.put("schemas", schemas);
-        data.put("courses", courses);
-        data.put("employees",employees);
-        return new ModelAndView("schema", data);
+        return j.serialize(employees);
+    }
+    @RequestMapping(value = "/schemaCourseShow", method= RequestMethod.GET)
+    public @ResponseBody String schemaCourseShow() {
+        JSONSerializer j = new JSONSerializer();
+        List<Course> courses = courseService.getCoursesOnlyActive();
+        return j.serialize(courses);
     }
     @RequestMapping(value = "/addSchema", method = RequestMethod.POST)
-    public ModelAndView addSchema(@RequestParam("courseId")String courseId,
-                                  @RequestParam("coachId")String coachId,
-                                  @RequestParam("date")String date) {
+    public void addSchema(@RequestParam String courseId, String coachId, String date) {
+
         Schema schema = new Schema();
         UUID schemaId = new UUID(6,6);
         Employee employee = employeeService.getEmployeeById(coachId);
+        System.out.println("employee~~~~"+employee.getEmployeeName());
         if (schemaService.schemaAtThisTimeExist(employee,DateParseHelper.datePasrser(date))){
         }else{
             schema.setSchemaId(schemaId.randomUUID().toString());
@@ -65,15 +68,12 @@ public class SchemaController {
             schema.setType("public");
             schemaService.insertSchema(schema);
         }
-
-        return new ModelAndView("redirect:/schemaOperate/schemaShow");
     }
-    @RequestMapping("/deleteSchema")
-    public ModelAndView deleteSchema(@RequestParam("schemasId")String schemasId,@CookieValue(value="loginId", defaultValue="") String userIdInCookie) {
-        schemaService.equals(schemasId);
+    @RequestMapping(value = "/{schemaId}",method = RequestMethod.DELETE)
+    public void deleteSchema(@PathVariable String schemaId) {
+        schemaService.equals(schemaId);
 //        schemaService.deleteAllSchemaByIds(schemasId.toString());
-        schemaService.delelteSchema(schemasId);
-        return new ModelAndView("redirect:/schemaOperate/schemaShow");
+        schemaService.delelteSchema(schemaId);
     }
     @RequestMapping("/goToSchemaUpdate")
     public ModelAndView goToSchemaUpdate(@RequestParam("schemasId")String schemasId,
@@ -91,41 +91,4 @@ public class SchemaController {
         return new ModelAndView("redirect:/schemaOperate/schemaShow");
     }
 
-
-    @RequestMapping(value = "/schemaPrivateShow" , method= RequestMethod.GET)
-    public ModelAndView schemaPrivateShow() {
-        List<Schema> schemas = schemaService.getPrivateSchemas();
-        List<Course> courses = courseService.getCoursesOnlyActive();
-        List<Employee> employees = employeeService.getEmployeesOnlyActive();
-        List<Customer> customers = customerService.getCustomerOnlyActive();
-
-        data.put("customers",customers);
-        data.put("schemas", schemas);
-        data.put("courses", courses);
-        data.put("employees", employees);
-        return new ModelAndView("privateSchema", data);
-    }
-
-    @RequestMapping(value = "/addPrivateSchema" , method= RequestMethod.POST)
-    public ModelAndView addPrivateSchema(@RequestParam("customerId")String customerId,@RequestParam("courseId")String courseId,
-                                  @RequestParam("coachId")String coachId,
-                                  @RequestParam("date")String date,
-                                  @CookieValue(value="loginId", defaultValue="") String userIdInCookie) {
-        Employee employee = employeeService.getEmployeeById(coachId);
-        if (schemaService.schemaAtThisTimeExist(employee,DateParseHelper.datePasrser(date))){
-            System.out.println("has existed~~~~~~~~~~~~~~~~");
-        }else {
-            Schema schema = new Schema();
-            UUID schemaId = new UUID(6, 6);
-            schema.setSchemaId(schemaId.randomUUID().toString());
-            schema.setCustomer(customerService.getCustomerById(customerId));
-            schema.setCourse(courseService.getCourseById(courseId));
-            schema.setEmployee(employee);
-            schema.setDate(DateParseHelper.datePasrser(date));
-            schema.setState("active");
-            schema.setType("private");
-            schemaService.insertSchema(schema);
-        }
-        return new ModelAndView("redirect:/schemaOperate/schemaPrivateShow");
-    }
 }

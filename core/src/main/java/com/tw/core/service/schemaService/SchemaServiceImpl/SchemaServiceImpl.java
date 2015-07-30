@@ -67,7 +67,6 @@ public class SchemaServiceImpl extends BaseServiceImpl implements SchemaService{
     @Override
     public void deleteAllSchemaByIds(String schemasId){
         String[] schemasIds = schemasId.split("\\,");
-        logger.info("this is schemasIds" + schemasIds[0]);
         for (int i=0;i<schemasIds.length;i++){
             delelteSchema(schemasIds[i]);
         }

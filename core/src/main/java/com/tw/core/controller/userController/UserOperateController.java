@@ -1,7 +1,5 @@
 package com.tw.core.controller.userController;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.tw.core.bean.Employee;
 import com.tw.core.bean.Schema;
 import com.tw.core.bean.User;
@@ -9,20 +7,15 @@ import com.tw.core.org.json.JSONException;
 import com.tw.core.org.json.JSONObject;
 import com.tw.core.service.employeeService.EmployeeService;
 import com.tw.core.service.schemaService.SchemaService;
-import com.tw.core.service.userService.UserService;
-import com.tw.core.util.HibernateProxyTypeAdapter;
+import com.tw.core.UserService;
 import com.tw.core.util.MD5Util;
-import com.tw.core.util.StringSplitHelper;
 import flexjson.JSONSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
 

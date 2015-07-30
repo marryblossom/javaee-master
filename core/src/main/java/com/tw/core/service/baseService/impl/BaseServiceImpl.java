@@ -58,6 +58,7 @@ public class BaseServiceImpl implements BaseService {
 
     @Override
     public void save(Object object) {
+        System.out.println("-----------------"+object.getClass());
         session.beginTransaction();//开启操作数据库的事务
         session.save(object);
         session.getTransaction().commit();
