@@ -10,13 +10,13 @@ function usersShowController($scope, $http,$route){
             .success(function(){
                $route.reload();
         });
-    }
+    };
     $scope.userUnlock = function(userId){
         $http.get('/web/userOperate/unlock/'+userId)
             .success(function(){
                 $route.reload();
             });
-    }
+    };
     $scope.userAdd = function(){
         $http({
             method: 'POST',
@@ -33,4 +33,40 @@ function usersShowController($scope, $http,$route){
             $route.reload();
         });
     };
+    $scope.userGoUpdate = function(userId){
+        $scope.userId = userId;
+        $("#userId").val(userId);
+        //$("#userId").attributes("value");
+        $("#userName").val($('#userName'+userId).html());
+        $("#employeeName").val($('#employeeName'+userId).html());
+        $("#userPass").val($('#password'+userId).html());
+        if($('#gender'+userId).html() == "female"){
+            $("#genderFemale").prop("checked", true);
+        }else{
+            $("#genderMale").prop("cheked", true);
+        }
+        $("#userEmail").val($('#email'+userId).html());
+        $("#userIntroduction").val($('#introduction'+userId).html());
+        $('#updateData').show();
+    };
+    $scope.userUpdate = function(){
+        $http({
+            method: 'POST',
+            url: '/web/userOperate/updateUser',
+            params: {
+                'userId': $("#userId").val(),
+                'username': $("#userName").val(),
+                'password': $("#userPass").val(),
+                'employeename': $("#employeeName").val(),
+                'gender':"female",
+                'email':$("#userEmail").val(),
+                'introduction':$("#userIntroduction").val()
+            }
+        }).success(function(){
+            $route.reload();
+        });
+    };
+    $scope.updateCancel = function(){
+        $('#updateData').hide();
+    }
 }

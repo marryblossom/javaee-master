@@ -33,6 +33,7 @@ body {
     -moz-transition: border linear 0.3s, box-shadow linear 0.3s;
     transition: border linear 0.3s, box-shadow linear 0.3s;
 }
+
 .input-insert-area{
     height:25px;
     -moz-background-clip: padding;
@@ -105,6 +106,24 @@ body {
     -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
+.update-button[type="submit"] {
+    border-radius: 15px;
+    background-image: -webkit-linear-gradient(top, #5cb85c 0%, #419641 100%);
+    background-image:      -o-linear-gradient(top, #5cb85c 0%, #419641 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5cb85c), to(#419641));
+    background-image:         linear-gradient(to bottom, #5cb85c 0%, #419641 100%);
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff419641', GradientType=0);*/
+    /*filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);*/
+    background-repeat: repeat-x;
+    /*border-color: #3e8f3e;*/
+    color: #fff;
+    border: 1px solid #55cf55;
+}
+.update-button:hover,
+.update-button:focus {
+    background-color: #419641;
+    background-position: 0 -15px;
+}
 .btn.user{
     color: #666;
     background-color: #EEE;
@@ -169,4 +188,13 @@ body {
     -webkit-transition: border linear 0.3s, box-shadow linear 0.3s;
     -moz-transition: border linear 0.3s, box-shadow linear 0.3s;
     transition: border linear 0.3s, box-shadow linear 0.3s;
+}
+.errorContainer{
+    background-color: #ffd1e7;
+    border-radius: 100px;
+    margin: 0 10px 0px 10px;
+    padding: 0.5px 50px;
+}
+.errorMessage{
+    color: #E28383;
 }

@@ -1,5 +1,6 @@
 package com.tw.core.service.schemaService;
 
+import com.tw.core.DAO.IBaseDao;
 import com.tw.core.bean.*;
 import java.util.Date;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * Created by marry on 7/19/15.
  */
-public interface SchemaService {
+public interface SchemaService{
     public void insertSchema(Schema schema);
     public void delelteSchema(String id);
     public List<Schema> getSchemas();

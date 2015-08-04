@@ -2,6 +2,7 @@ package com.tw.core.bean;
 
 // Generated 2015-7-15 23:47:27 by Hibernate Tools 3.4.0.CR1
 
+import com.google.gson.annotations.Expose;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.FetchType;
@@ -13,16 +14,21 @@ import javax.persistence.OneToOne;
  */
 
 public class User implements java.io.Serializable {
-
+	@Expose
 	private String userId;
 
 	//	@Autowired
 	@OneToOne
 	@JoinColumn(referencedColumnName = "employeeId")
+	@Expose
 	private Employee employee;
+	@Expose
 	private String userName;
+	@Expose
 	private String password;
+	@Expose
 	private String state;
+	@Expose
 	private String type;
 
 	public User() {
@@ -92,4 +98,14 @@ public class User implements java.io.Serializable {
 		this.type = type;
 	}
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"userId='" + userId + '\'' +
+				", userName='" + userName + '\'' +
+				", password='" + password + '\'' +
+				", state='" + state + '\'' +
+				", type='" + type + '\'' +
+				'}';
+	}
 }

@@ -1,3 +1,9 @@
+<!--<script type="text/javascript">-->
+    <!--$(window).load(function()-->
+    <!--{-->
+        <!--$('#example').glDatePicker();-->
+    <!--});-->
+<!--</script>-->
 <div class="insert-input" ng-controller="schemasShowController">
     <div class="user-container">
         <div class="user-insert-input">
@@ -6,7 +12,7 @@
                     <li>
                         <i>课程：</i>
 
-            <span><input class="input-insert" type="text" name="courseId" ng-model="courseId"/>
+            <span>
               <select name="courseId" ng-model="courseId">
                       <option ng-repeat="course in courses" value ="{{course.courseId}}" >{{course.name}}</option>
               </select>
@@ -14,14 +20,15 @@
                     </li>
                     <li>
                         <i>教练：</i>
-            <span><input class="input-insert" type="text" name="coachId" ng-model="coachId"/>
+            <span>
               <select name="coachId" ng-model="coachId">
                       <option ng-repeat="employee in employees" value ="{{employee.emloyeeId}}" >{{employee.employeeName}}</option>
               </select>
+
             </span>
                     </li>
                     <li>
-                        <i>时间：</i><span><input id="example" class="input-insert" type="text" name="date" ng-model="date"/></span>
+                        <i>时间：</i><span><input id="example" class="input-insert" type="text" name="date" ng-model="dateTime"/></span>
                     </li>
                     <span><input class="input-button" type="submit" value="Submit" ng-click="schemaAdd()"/></span>
                 </ul>
@@ -29,8 +36,11 @@
         </div>
     </div>
 </div>
-</div>
+
 <div class="data-show">
+    <div id="error" class="errorContainer" hidden>
+        <p class="errorMessage">This coach has lessens at that date,please change a date!!!</p>
+    </div>
     <p class="check-list">近期课程安排
         <a type="button" href="#/privateSchemaOperate">private</a>
     </p>

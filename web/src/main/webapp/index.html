@@ -7,14 +7,11 @@
     <link href="lib/css/base.css" rel="stylesheet" type="text/css">
     <link href="lib/css/user.css" rel="stylesheet" type="text/css">
     <link href="lib/css/table.css" rel="stylesheet" type="text/css">
-
     <title></title>
     <script>
-
     </script>
 </head>
-
-<body ng-app="user_manager" >
+<body ng-app="user_manager">
 <div class="header-panel">
     <div class="header-container">
         <div class="navbar-list">
@@ -30,7 +27,8 @@
         </div>
         <div class="navlist-login">
             <nav class="login-reminder">
-                <ul><li>
+                <ul>
+                    <li>
                         <a class="header-login-a" type="button" href="/web/userLogin/logout">logout</a>
                     </li>
                 </ul>
@@ -39,14 +37,17 @@
     </div>
 </div>
 <div ng-view></div>
-    <script src="angular/angular.js"></script>
+
+<script src="lib/js/jquery-1.11.1.min.js"></script>
+<script src="lib/js/bootstrap.js"></script>
+<script src="angular/angular.js"></script>
 <script src="angular/angular-route.min.js"></script>
 <script src="app.js"></script>
 <script src="controller/usersController.js"></script>
 <script src="controller/coursesController.js"></script>
 <script src="controller/customerController.js"></script>
 <script src="controller/schemaController.js"></script>
-<!--<script src="controller/privateSchemaController.js"></script>-->
-<!--<script src="calendar/glDatePicker.min.js"></script>-->
+<script src="controller/privateSchemaController.js"></script>
+<script src="calendar/glDatePicker.js"></script>
 </body>
 </html>

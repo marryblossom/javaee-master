@@ -4,8 +4,8 @@ import com.tw.core.bean.Employee;
 import com.tw.core.bean.User;
 import com.tw.core.service.employeeService.EmployeeService;
 import com.tw.core.service.employeeService.employeeServiceImpl.EmployeeServiceImpl;
-import com.tw.core.UserService;
-import com.tw.core.userServiceImpl.UserServiceImpl;
+import com.tw.core.service.userService.UserService;
+import com.tw.core.service.userService.userServiceImpl.UserServiceImpl;
 import com.tw.core.util.MD5Util;
 import org.junit.Before;
 import org.junit.Test;
@@ -101,7 +101,7 @@ public class UserServiceTest {
 //
 //    }
 //    public static void deleteUserAndEmployeeTest(){
-//        userService.delelteUser("9bbd8a42-6609-4eb6-bd2e-3ef030d6a53e");
+//        userService.deleteUser("9bbd8a42-6609-4eb6-bd2e-3ef030d6a53e");
 //        employeeService.delelteEmployee("5ab0bb1d-3afb-4633-89fa-a2f2f185c457");
 //
 //    }

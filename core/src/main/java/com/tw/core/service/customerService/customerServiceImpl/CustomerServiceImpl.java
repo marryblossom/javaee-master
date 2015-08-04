@@ -1,7 +1,7 @@
 package com.tw.core.service.customerService.customerServiceImpl;
 
 import com.tw.core.bean.Customer;
-import com.tw.core.service.baseService.impl.BaseServiceImpl;
+import com.tw.core.DAO.impl.BaseServiceImpl;
 import com.tw.core.service.customerService.CustomerService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;

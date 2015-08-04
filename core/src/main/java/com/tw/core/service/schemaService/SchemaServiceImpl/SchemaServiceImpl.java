@@ -1,7 +1,7 @@
 package com.tw.core.service.schemaService.schemaServiceImpl;
 
 import com.tw.core.bean.*;
-import com.tw.core.service.baseService.impl.BaseServiceImpl;
+import com.tw.core.DAO.impl.BaseServiceImpl;
 import com.tw.core.service.schemaService.SchemaService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;

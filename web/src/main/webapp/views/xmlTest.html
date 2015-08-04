@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/js/jquery-1.11.1.min.js"></script>
+    <script src="../lib/js/serializationTest.js"></script>
+
+
+</head>
+<body>
+<form>
+    <ul class="user-update-info">
+        <li>
+            <i>name：</i><span><input id="userName" class="input-insert" type="text" name="username"/></span>
+        </li>
+        <li>
+            <i>employee name：</i><span><input id="employeeName" class="input-insert" type="text" name="employeename" /></span>
+        </li>
+        <li>
+            <i>password：</i><span><input id="userPass" class="input-insert" type="password" name="password"/></span>
+        </li>
+
+        <li>
+            <i>gender：</i><span><input id="genderMale" class="input-insert" type="radio" name="gender" value="male"/> male
+                                            <input id="genderFemale" type="radio" name="gender" value="female"/> female</span>
+        </li>
+        <li>
+            <i>email：</i><span><input id="userEmail" class="input-insert" type="text" name="email"/></span>
+        </li>
+        <li>
+            <i>introduction：</i><span><input id="userIntroduction" class="input-insert-area" type="text" name="introduction"/></span>
+        </li>
+                            <span><input id="serialization" class="update-button" type="submit" value="Submit"/>
+                            </span>
+    </ul>
+</form>
+<div id="success" hidden>success!!!!!!</div>
+</body>
+</html>

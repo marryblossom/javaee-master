@@ -2,6 +2,8 @@ package com.tw.core.bean;
 
 // Generated 2015-7-15 23:47:27 by Hibernate Tools 3.4.0.CR1
 
+import com.google.gson.annotations.Expose;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,11 +12,17 @@ import java.util.Set;
  */
 public class Customer implements java.io.Serializable {
 
+	@Expose
 	private String customerId;
+	@Expose
 	private String name;
+	@Expose
 	private String gender;
+	@Expose
 	private String state;
+	@Expose
 	private String type;
+	@Expose
 	private String introduction;
 	private Set<Schema> schemas = new HashSet<Schema>(0);
 

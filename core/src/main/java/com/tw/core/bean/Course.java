@@ -2,6 +2,8 @@ package com.tw.core.bean;
 
 // Generated 2015-7-15 23:47:27 by Hibernate Tools 3.4.0.CR1
 
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,12 +14,17 @@ import java.util.Set;
 //@Where(clause = "state!='active'")
 public class Course implements java.io.Serializable {
 
+	@Expose
 	private String courseId;
+	@Expose
 	private String name;
+	@Expose
 	private String introduction;
+	@Expose
 	private String state;
+	@Expose
 	private String type;
-	//@OneToMany
+	@OneToMany
 	private Set<Schema> schemas = new HashSet<Schema>(0);
 
 	public Course() {
@@ -84,4 +91,14 @@ public class Course implements java.io.Serializable {
 		this.schemas = schemas;
 	}
 
+	@Override
+	public String toString() {
+		return "Course{" +
+				"courseId='" + courseId + '\'' +
+				", name='" + name + '\'' +
+				", introduction='" + introduction + '\'' +
+				", state='" + state + '\'' +
+				", type='" + type + '\'' +
+				'}';
+	}
 }

@@ -2,6 +2,10 @@ package com.tw.core.bean;
 
 // Generated 2015-7-15 23:47:27 by Hibernate Tools 3.4.0.CR1
 
+import com.google.gson.annotations.Expose;
+
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,14 +14,23 @@ import java.util.Set;
  */
 public class Employee implements java.io.Serializable {
 
+	@Expose
 	private String emloyeeId;
+	@Expose
 	private String gender;
+	@Expose
 	private String email;
+	@Expose
 	private String introduction;
+	@Expose
 	private String state;
+	@Expose
 	private String type;
+	@Expose
 	private String employeeName;
+
 	private Set<Schema> schemas = new HashSet<Schema>(0);
+
 	private Set<User> users = new HashSet<User>(0);
 
 	public Employee() {
@@ -95,7 +108,7 @@ public class Employee implements java.io.Serializable {
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
 	}
-
+	@OneToMany
 	public Set<Schema> getSchemas() {
 		return this.schemas;
 	}
@@ -103,7 +116,7 @@ public class Employee implements java.io.Serializable {
 	public void setSchemas(Set<Schema> schemas) {
 		this.schemas = schemas;
 	}
-
+	@OneToMany
 	public Set<User> getUsers() {
 		return this.users;
 	}
@@ -112,4 +125,16 @@ public class Employee implements java.io.Serializable {
 		this.users = users;
 	}
 
+	@Override
+	public String toString() {
+		return "Employee{" +
+				"emloyeeId='" + emloyeeId + '\'' +
+				", gender='" + gender + '\'' +
+				", email='" + email + '\'' +
+				", introduction='" + introduction + '\'' +
+				", state='" + state + '\'' +
+				", type='" + type + '\'' +
+				", employeeName='" + getEmployeeName() + '\'' +
+				'}';
+	}
 }

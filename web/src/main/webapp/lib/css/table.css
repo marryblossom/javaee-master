@@ -46,6 +46,13 @@
     border-bottom: 1px #999e9d solid;
     padding:5px;
 }
-
+.table-update{
+    height: 50px;
+    background-color: #0bb386;
+    opacity: 0.4;
+    border-radius: 15px;
+    margin: 0 20px;
+    padding: 0 13px;
+}
 
 

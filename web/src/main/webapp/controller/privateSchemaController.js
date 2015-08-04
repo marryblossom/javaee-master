@@ -4,19 +4,19 @@ function privateSchemaController($scope, $http,$route){
     $http.get('/web/privateSchemaOperate/schemaPrivateShow')
         .success(function(schemas) {
             $scope.schemas = schemas;
+            $http.get('/web/schemaOperate/schemaEmployeeShow')
+                .success(function(employees) {
+                    $scope.employees = employees;
+                    $http.get('/web/schemaOperate/schemaCourseShow')
+                        .success(function(courses) {
+                            $scope.courses = courses;
+                            $http.get('/web/privateSchemaOperate/schemaPrivateCustomer')
+                                .success(function(customers) {
+                                    $scope.customers = customers;
+                                });
+                        });
+                });
         });
-    //$http.get('/web/schemaOperate/schemaEmployeeShow')
-    //    .success(function(employees) {
-    //        $scope.employees = employees;
-    //    });
-    //$http.get('/web/schemaOperate/schemaCourseShow')
-    //    .success(function(courses) {
-    //        $scope.courses = courses;
-    //    });
-    //$http.get('/web/privateSchemaOperate/schemaPrivateCustomer')
-    //    .success(function(customers) {
-    //        $scope.customers = customers;
-    //    });
     $scope.privateSchemaDelete = function(schemaId){
         $http.delete('/web/schemaOperate/'+schemaId)
             .success(function(){

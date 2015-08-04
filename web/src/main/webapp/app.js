@@ -5,21 +5,21 @@ routeApp.config(function ($routeProvider) {
             templateUrl: 'views/users.html',
             controller: 'usersShowController'
         })
-        .when('/courseOperate',{
+        .when('/courseOperate', {
             templateUrl: 'views/courses.html',
             controller: 'coursesShowController'
         })
-        .when('/customerOperate',{
+        .when('/customerOperate', {
             templateUrl: 'views/customers.html',
             controller: 'customerShowController'
         })
-        .when('/schemaOperate',{
+        .when('/schemaOperate', {
             templateUrl: 'views/schemas.html',
             controller: 'schemasShowController'
+        })
+        .when('/privateSchemaOperate', {
+            templateUrl: 'views/privateSchemas.html',
+            controller: 'privateSchemaController'
         });
-        //.when('/privateSchemaOperate',{
-        //    templateUrl: 'views/privateSchemas.html',
-        //    controller: 'privateSchemaController'
-        //});
     //otherwise({redirectTo: '/phones'});
 });

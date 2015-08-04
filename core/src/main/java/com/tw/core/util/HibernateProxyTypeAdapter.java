@@ -6,6 +6,7 @@ package com.tw.core.util;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -20,7 +21,8 @@ import java.io.IOException;
  */
 public class HibernateProxyTypeAdapter extends TypeAdapter<HibernateProxy> {
 
-    public static final com.google.gson.TypeAdapterFactory FACTORY = new com.google.gson.TypeAdapterFactory() {
+    public static final TypeAdapterFactory FACTORY = new TypeAdapterFactory() {
+
         @Override
         @SuppressWarnings("unchecked")
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
