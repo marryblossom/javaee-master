@@ -7,6 +7,8 @@ import com.tw.core.bean.Schema;
 import com.tw.core.service.courseService.CourseService;
 import com.tw.core.service.schemaService.SchemaService;
 import com.tw.core.util.HibernateProxyTypeAdapter;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/courseOperate")
 public class CourseController {
+    private static final Log log = LogFactory.getLog(CourseController.class);
     private Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation() //不导出实体中没有用@Expose注解的属性
             .enableComplexMapKeySerialization() //支持Map的key为复杂对象的形式

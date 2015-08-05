@@ -13,6 +13,7 @@
     <mvc:annotation-driven/>
     <mvc:resources mapping="/**" location="/"/>
     <context:component-scan base-package="com.tw.core"/>
+    <!--<context:component-scan base-package="../test/java"/>-->
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
     <!--<mvc:interceptors>-->
         <!--<mvc:interceptor>-->

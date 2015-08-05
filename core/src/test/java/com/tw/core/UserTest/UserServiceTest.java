@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  * Created by marry on 7/16/15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:hibernate.cfg.xml"})
+@ContextConfiguration(locations = {"/test.xml"})
 //@TransactionConfiguration(defaultRollback = false, transactionManager = "transactionManager")
 public class UserServiceTest {
     private static Logger logger = Logger.getLogger("userServiceTest");

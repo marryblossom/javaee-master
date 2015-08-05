@@ -6,6 +6,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.stereotype.Service;
+//import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import java.util.List;
  */
 @Service
 @Transactional
+//@EnableTransactionManagement
 public class BaseServiceImpl implements IBaseDao {
     private static Session session;
     static {

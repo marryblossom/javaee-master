@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+    <context:annotation-config/>
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.tw.core"/>
+    <!-- 用于读取properties文件，此处将数据库连接的用户名密码等存在jdbc.properties文件中 -->
+    <!--<bean id="propertyConfigurer"-->
+          <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="locations">-->
+            <!--<list>-->
+                <!--<value>jdbc.properties</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <!-- 配置数据库连接 -->
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="url" value="jdbc:mysql://localhost:3306/${jdbc.url}" />-->
+        <!--<property name="username" value="root" />-->
+        <!--<property name="password" value="root" />-->
+        <!--<property name="poolPreparedStatements" value="true" />-->
+        <!--<property name="defaultAutoCommit" value="true" />-->
+    <!--</bean>-->
+    <!-- 整合hibernate -->
+    <!--<bean id="sessionFactory"-->
+          <!--class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">-->
+        <!--<property name="hibernateProperties">-->
+            <!--<value> hibernate.dialect=org.hibernate.dialect.MySQLDialect-->
+                <!--hibernate.query.substitutions=true-->
+                <!--hibernate.show_sql=true-->
+                <!--hibernate.hbm2ddl.auto=none-->
+            <!--</value>-->
+        <!--</property>-->
+        <!--&lt;!&ndash; 持久化类，注解形式 &ndash;&gt;-->
+        <!--<property name="annotatedClasses">-->
+            <!--<list>-->
+            <!--<value>nju.software.xkxt.data.dataobject.UserDO</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!-- 事务管理  注：事实上当事务管理器名字为transactionManager时，就不需要加transaction-manager属性 -->
+    <!--&lt;!&ndash;<tx:annotation-driven transaction-manager="transactionManager" />&ndash;&gt;-->
+    <!--<bean id="transactionManager"-->
+          <!--class="org.springframework.orm.hibernate3.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactory" />-->
+    <!--</bean>-->
+    <!--<mvc:interceptors>-->
+    <!--<mvc:interceptor>-->
+    <!--<mvc:mapping path="/**" />-->
+    <!--<bean class="com.tw.core.interceptor.LoginInterceptor">-->
+    <!--</bean>-->
+    <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/" />
+        <property name="suffix" value=".html" />
+    </bean>
+
+</beans>
