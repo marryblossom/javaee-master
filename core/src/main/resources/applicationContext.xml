@@ -15,14 +15,6 @@
     <context:component-scan base-package="com.tw.core"/>
      <!--用于读取properties文件，此处将数据库连接的用户名密码等存在jdbc.properties文件中 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
-    <!--<bean id="propertyConfigurer"-->
-          <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-        <!--<property name="locations">-->
-            <!--<list>-->
-                <!--<value>classpath:jdbc.properties</value>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
 
     <!-- 配置数据库连接 -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

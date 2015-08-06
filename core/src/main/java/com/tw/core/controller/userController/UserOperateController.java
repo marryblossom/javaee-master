@@ -66,8 +66,6 @@ public class UserOperateController {
         UUID uuid = new UUID(6,6);
         Employee employee = new Employee(uuid.randomUUID().toString(),gender,email,introduction,"active","coach",employeename);
         User user = new User(uuid.randomUUID().toString(),employee,username,MD5Util.GetMD5Code(password),"active","employee");
-        System.out.println("user~~~~~~~~~"+user);
-        System.out.println("employee~~~~~~~~~"+employee);
 
         employeeService.insertEmployee(employee);
         userService.insertUser(user);
@@ -76,9 +74,7 @@ public class UserOperateController {
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
     public void update(@RequestParam String userId,String username, String employeename, String gender,String password,
                                String introduction, String email,HttpServletResponse response) {
-        System.out.println( "   userId=="+userId+" userName=="+username+" employeename=="+employeename+" gender=="+gender+"  introduction=="+introduction+"  email=="+email);
         User user = userService.getUserById(userId);
-        System.out.println("user~~~~~~~~~~" + user.toString());
         Employee employee = user.getEmployee();
 
         user.setUserName(username);
