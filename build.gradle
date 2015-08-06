@@ -16,13 +16,16 @@ subprojects {
         compile 'org.springframework:spring-aop:4.1.7.RELEASE'
         compile 'org.springframework:spring-core:4.1.7.RELEASE'
         compile 'org.springframework:spring-web:4.1.7.RELEASE'
-        compile 'org.springframework:spring-context:4.1.7.RELEASE'
-        compile 'org.springframework:spring-test:4.1.7.RELEASE'
+        compile 'org.springframework:spring-context:4.2.0.RELEASE'
         compile 'org.springframework:spring-webmvc:4.1.7.RELEASE'
         compile 'org.apache.logging.log4j:log4j-core:2.3'
         compile 'org.webjars:angularjs:2.0.0-alpha.22','org.webjars.bower:angular-route:1.4.3'
         compile 'org.json:json:20141113'
         compile 'com.google.code.gson:gson:2.3.1'
+        compile 'org.springframework:spring-jdbc:4.2.0.RELEASE'
+        compile 'org.springframework:spring-test:4.2.0.RELEASE'
+        compile 'org.springframework:spring-orm:4.2.0.RELEASE'
+        compile 'org.springframework:spring-tx:4.2.0.RELEASE'
         testCompile group: 'junit', name: 'junit', version: '4.11'
 
     }

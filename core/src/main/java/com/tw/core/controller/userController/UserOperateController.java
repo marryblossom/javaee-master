@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping("/userOperate")
 public class UserOperateController {
-    private static Logger logger = Logger.getLogger("UserOperateController");
+    private final static Logger logger = Logger.getLogger(UserOperateController.class.getName());
     private Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation() //不导出实体中没有用@Expose注解的属性
             .enableComplexMapKeySerialization() //支持Map的key为复杂对象的形式

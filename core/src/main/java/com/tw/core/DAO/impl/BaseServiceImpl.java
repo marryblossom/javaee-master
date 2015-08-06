@@ -1,11 +1,13 @@
 package com.tw.core.DAO.impl;
 
 import com.tw.core.DAO.IBaseDao;
-import com.tw.core.util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 //import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.transaction.Transactional;
@@ -16,15 +18,16 @@ import java.util.List;
  */
 @Service
 @Transactional
-//@EnableTransactionManagement
+@EnableTransactionManagement
 public class BaseServiceImpl implements IBaseDao {
-    private static Session session;
-    static {
-        session = HibernateUtil.getSessionFactory().openSession();
-    }
+    @Autowired
+    private SessionFactory sessionFactory;
+//    static {
+//        session = HibernateUtil.getSessionFactory().openSession();
+//    }
     @Override
     public Session getCurrentSession() {
-        return session;
+        return sessionFactory.getCurrentSession();
     }
 
     @Override
@@ -54,27 +57,23 @@ public class BaseServiceImpl implements IBaseDao {
 
     @Override
     public void deleteById(Class<?> clazz, String id) {
-        session.beginTransaction();//开启操作数据库的事务
-        session.delete(findById(clazz, id));
-        session.getTransaction().commit();
+//        getCurrentSession().beginTransaction();//开启操作数据库的事务
+        getCurrentSession().delete(findById(clazz, id));
+//        getCurrentSession().getTransaction().commit();
     }
 
     @Override
     public void save(Object object) {
-        session.beginTransaction();//开启操作数据库的事务
-        session.save(object);
-        session.getTransaction().commit();
+        getCurrentSession().save(object);
     }
 
     @Override
     public void update(Object object) {
-        session.beginTransaction();//开启操作数据库的事务
-        session.update(object);
+        getCurrentSession().update(object);
 //        // if you're doing transactional work
 //        session.setFlushMode(FlushMode.COMMIT);
 //        // if you want to control flushes directly
 //        session.setFlushMode(FlushMode.MANUAL);
-        session.getTransaction().commit();
 
     }
 
@@ -89,11 +88,9 @@ public class BaseServiceImpl implements IBaseDao {
 
     @Override
     public <T> void deleteAll(List<T> list) {
-        session.beginTransaction();//开启操作数据库的事务
         for (T object : list) {
             getCurrentSession().delete(object);
         }
-        session.getTransaction().commit();
     }
 
     @Override

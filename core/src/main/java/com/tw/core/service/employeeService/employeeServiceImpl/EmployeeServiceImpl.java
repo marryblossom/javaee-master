@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by marry on 7/16/15.
@@ -15,9 +16,11 @@ import java.util.List;
 @Service
 @Transactional
 public class EmployeeServiceImpl extends BaseServiceImpl implements EmployeeService {
+    private final static Logger logger = Logger.getLogger(EmployeeServiceImpl.class.getName());
     @Override
     public void insertEmployee(Employee employee) {
-        this.save(employee);
+        logger.info(employee.getEmloyeeId());
+        save(employee);
     }
 
     @Override
