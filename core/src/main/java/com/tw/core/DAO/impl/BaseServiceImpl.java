@@ -55,9 +55,7 @@ public class BaseServiceImpl implements IBaseDao {
 
     @Override
     public void deleteById(Class<?> clazz, String id) {
-//        getCurrentSession().beginTransaction();//开启操作数据库的事务
         getCurrentSession().delete(findById(clazz, id));
-//        getCurrentSession().getTransaction().commit();
     }
 
     @Override
@@ -107,8 +105,7 @@ public class BaseServiceImpl implements IBaseDao {
 
     @Override
     public <T> T findById(Class<T> clazz, String id) {
-        return (T) getCurrentSession().load(clazz, id);
-//        return (T) getCurrentSession().get(clazz, id);
+        return (T) getCurrentSession().get(clazz, id);
     }
 
 

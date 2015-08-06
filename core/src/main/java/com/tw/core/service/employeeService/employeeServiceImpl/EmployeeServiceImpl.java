@@ -19,18 +19,21 @@ public class EmployeeServiceImpl extends BaseServiceImpl implements EmployeeServ
     private final static Logger logger = Logger.getLogger(EmployeeServiceImpl.class.getName());
     @Override
     public void insertEmployee(Employee employee) {
-        logger.info(employee.getEmloyeeId());
         save(employee);
     }
 
     @Override
     public void delelteEmployee(String id) {
-        this.deleteById(Employee.class, id);
+        deleteById(Employee.class, id);
+    }
+    @Override
+    public void deleteEmployee(Employee employee){
+        delete(employee);
     }
 
     @Override
     public List<Employee> getEmployees() {
-        List<Employee> employees = this.queryAll(Employee.class);
+        List<Employee> employees = queryAll(Employee.class);
         return employees;
     }
 
@@ -42,8 +45,7 @@ public class EmployeeServiceImpl extends BaseServiceImpl implements EmployeeServ
 
     @Override
     public void updateEmployee(Employee employee) {
-
-        this.update(employee);
+        update(employee);
     }
     @Override
     public void changeEmployeeState(Employee employee){
@@ -62,6 +64,6 @@ public class EmployeeServiceImpl extends BaseServiceImpl implements EmployeeServ
 
     public static void main(String[] args){
         EmployeeServiceImpl service = new EmployeeServiceImpl();
-        service.getEmployeesOnlyActive();
+        service.delelteEmployee("1");
     }
 }
