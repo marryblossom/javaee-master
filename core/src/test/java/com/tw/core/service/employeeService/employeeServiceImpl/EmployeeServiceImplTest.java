@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  * Created by marry on 8/6/15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:applicationContext.xml"})
+@ContextConfiguration(locations = {"classpath*:/applicationContext.xml"})
 //@WebAppConfiguration
 @Transactional
 @TransactionConfiguration(defaultRollback = false)

@@ -22,9 +22,7 @@ import java.util.List;
 public class BaseServiceImpl implements IBaseDao {
     @Autowired
     private SessionFactory sessionFactory;
-//    static {
-//        session = HibernateUtil.getSessionFactory().openSession();
-//    }
+
     @Override
     public Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
